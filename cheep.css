@@ -1,0 +1,17 @@
+*{font-family: "Open Sans", SansSerif; }
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
+#header{
+    width: 100%;
+    min-height: 80px;
+    border-bottom: lightgray 1px solid;
+}
+
+#bird{
+    width: 70px;
+    margin: 10px;
+}
