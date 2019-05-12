@@ -1,8 +1,23 @@
 *{font-family: "Open Sans", SansSerif; }
 
 body{
+    background-image: url("images/iphoneOL.jpg");
+    background-repeat: no-repeat;
     margin: 0;
     padding: 0;
+}
+
+#screen {
+    height: 530px;
+    width: 300px;
+    margin: 105px 23px;
+}
+
+#logo {
+    text-align: center;
+    color: orange;
+    font-family: Lucida Grande;
+    font-size: 45px;
 }
 
 #header{
@@ -13,8 +28,8 @@ body{
 }
 
 #bird{
-    height: 45px;
-    margin: 8px;
+    height: 65px;
+    margin-top: 70px;
 }
 
 #search{
