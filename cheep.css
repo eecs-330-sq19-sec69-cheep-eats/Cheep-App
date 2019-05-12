@@ -8,22 +8,30 @@ body{
 #header{
     width: 100%;
     position: relative;
-    min-height: 60px;
+    height: 60px;
     border-bottom: lightgray 1px solid;
 }
 
 #bird{
     height: 45px;
     margin: 8px;
+    display: inline-block;
 }
 
 #search{
-    width: 60%
+    width: 60%;
+    display: inline-block;
+    background-color: blue;
+    position: relative;
+    height: 55px;
 }
 
 #search_bar{
     width: 60%;
-
+    border: none;
+    height: 45px;
+    position: relative;
+    margin: 5px;
 }
 
 .search_button{
