@@ -52,7 +52,7 @@
 
         <script>
             function writeUserData(){
-                console.log('Write Function Called')
+                console.log('Write Function Called');
 
                 if((document.getElementById('create_password').value) !== (document.getElementById('create_confpassword').value)){
                     alert('Password and Confirm Password fields do not match')
@@ -67,7 +67,12 @@
                     city: document.getElementById('create_city').value,
                     state: document.getElementById('create_state').value,
                     zip: document.getElementById('create_zip').value
+                }).then(() => {
+                    sessionStorage.setItem('username', document.getElementById('create_username').value);
+                    console.log(sessionStorage.getItem('username'));
+                    window.location.href = 'search.html';
                 });
+
             }
         </script>
 

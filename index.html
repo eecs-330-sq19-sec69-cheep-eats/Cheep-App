@@ -15,9 +15,9 @@
 
             <div class="login">
                 <div>Login</div>
-                <input type="text" class="login_input" id="login_username">
-                <input type="text" class="login_input" id="login_password">
-                <button>LOGIN</button>
+                <input type="text" placeholder="username" class="login_input" id="login_username">
+                <input type="text" placeholder="password" class="login_input" id="login_password">
+                <button onclick="login()">LOGIN</button>
             </div>
 
             <div style="font-size: 15px; margin-top: 200px;">New to Cheep?</div>
@@ -27,6 +27,7 @@
 
         <!-- The core Firebase JS SDK is always required and must be listed first -->
         <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>
 
         <!-- TODO: Add SDKs for Firebase products that you want to use
              https://firebase.google.com/docs/web/setup#config-web-app -->
@@ -44,6 +45,29 @@
             };
             // Initialize Firebase
             firebase.initializeApp(firebaseConfig);
+        </script>
+
+        <script>
+            function login(){
+                console.log('Login Function Called');
+
+                firebase.database().ref('/users/' + document.getElementById('login_username').value).once("value").then(function(snapshot) {
+                    if (!snapshot.exists()){
+                        alert('That username does not exist');
+                    }
+                }).then(
+                    firebase.database().ref('/users/' + document.getElementById('login_username').value).once('value').then(function(snapshot) {
+
+                        if(document.getElementById('login_password').value !== snapshot.child('password').val()){
+                            alert('Incorrect password');
+                        }
+                        else{
+                            sessionStorage.setItem('username',snapshot.child('username').val())
+                            window.location.href = 'search.html';
+                        }
+                }));
+
+            }
         </script>
 
     </body>
