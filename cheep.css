@@ -11,13 +11,22 @@ body{
     height: 530px;
     width: 300px;
     margin: 105px 23px;
+    text-align: center;
 }
 
 #logo {
-    text-align: center;
     color: orange;
     font-family: Lucida Grande;
     font-size: 45px;
+}
+
+.login {
+    margin-top: 25px;
+}
+
+.login_input {
+    margin: 5px;
+    align: middle;
 }
 
 #header{
@@ -44,4 +53,12 @@ body{
 .search_button{
     width: 50px;
     height: 50px;
+}
+
+#information {
+
+}
+
+.create {
+
 }

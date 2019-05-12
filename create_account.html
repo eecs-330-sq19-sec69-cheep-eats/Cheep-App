@@ -2,26 +2,29 @@
     <head>
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="cheep.css"/>
+        <script type="text/javascript" src="data.js"></script>
     </head>
 
     <body>
         <div id="screen">
-            <div id="logo">
-                <img id="bird" src="images/chick_3.png" style="margin-left: 10px">
-                <!--<input type="text" id="search_bar">-->
 
-                Cheep
+            <div id="information">
+                Email
+                <input type="text" class="create" id="create_email">
+                Username
+                <input type="text" class="create" id="create_username">
+                Password
+                <input type="text" class="create" id="create_password">
+                Confirm Password
+                <input type="text" class="create" id="create_confpassword">
+                Address (optional)
+                <input type="text" class="create" id="create_street">
+                <input type="text" class="create" id="create_city">
+                <input type="text" class="create" id="create_state">
+                <input type="text" class="create" id="create_zip">
             </div>
 
-            <div class="login">
-                <div>Login</div>
-                <input type="text" class="login_input" id="login_username">
-                <input type="text" class="login_input" id="login_password">
-                <button>LOGIN</button>
-            </div>
-
-            <div style="font-size: 15px; margin-top: 200px;">New to Cheep?</div>
-            <button style="font-size: 17px; margin-top: 10px;"><a href="create_account.html" style="text-decoration: none; color: black;">CREATE AN ACCOUNT</a></button>
+            <button style="font-size: 17px; margin-top: 10px;" onlick="writeUserData(0,'heather')">CREATE ACCOUNT</button>
 
         </div>
 
