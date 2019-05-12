@@ -2,10 +2,10 @@
     <head>
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="cheep.css"/>
-        <script type="text/javascript" src="data.js"></script>
     </head>
 
     <body>
+
         <div id="screen">
 
             <div id="information">
@@ -24,12 +24,13 @@
                 <input type="text" class="create" id="create_zip">
             </div>
 
-            <button style="font-size: 17px; margin-top: 10px;" onlick="writeUserData(0,'heather')">CREATE ACCOUNT</button>
+            <button onclick="writeUserData()" style="font-size: 17px; margin-top: 10px;">CREATE ACCOUNT</button>
 
         </div>
 
         <!-- The core Firebase JS SDK is always required and must be listed first -->
         <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>
 
         <!-- TODO: Add SDKs for Firebase products that you want to use
              https://firebase.google.com/docs/web/setup#config-web-app -->
@@ -47,6 +48,27 @@
             };
             // Initialize Firebase
             firebase.initializeApp(firebaseConfig);
+        </script>
+
+        <script>
+            function writeUserData(){
+                console.log('Write Function Called')
+
+                if((document.getElementById('create_password').value) !== (document.getElementById('create_confpassword').value)){
+                    alert('Password and Confirm Password fields do not match')
+                    return;
+                }
+
+                firebase.database().ref('users/'+document.getElementById('create_username').value).set({
+                    username: document.getElementById('create_username').value,
+                    email: document.getElementById('create_email').value,
+                    password: document.getElementById('create_password').value,
+                    street: document.getElementById('create_street').value,
+                    city: document.getElementById('create_city').value,
+                    state: document.getElementById('create_state').value,
+                    zip: document.getElementById('create_zip').value
+                });
+            }
         </script>
 
     </body>
