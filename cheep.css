@@ -10,7 +10,7 @@ body{
 #screen {
     height: 530px;
     width: 300px;
-    margin: 105px 23px;
+    margin: 105px 30px;
     text-align: center;
 }
 
@@ -32,8 +32,10 @@ body{
 #header{
     width: 100%;
     position: relative;
-    min-height: 60px;
-    border-bottom: lightgray 1px solid;
+    height: 18px;
+    padding: 20px 0;
+    border-bottom: gray 1px solid;
+    font-size: 21px;
 }
 
 #bird{
@@ -59,6 +61,22 @@ body{
 
 }
 
-.create {
+.user_info {
 
+}
+
+#menu {
+    border-top: 1px solid gray;
+    position: absolute;
+    bottom: 54px;
+    width: 300px;
+    height: 55px;
+}
+
+.menu_tab {
+    float: left;
+    width: 99px;
+    height: 40px;
+    padding-top: 7px;
+    padding-bottom: 7px;
 }
