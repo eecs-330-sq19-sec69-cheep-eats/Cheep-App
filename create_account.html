@@ -10,18 +10,18 @@
 
             <div id="information">
                 Email
-                <input type="text" class="create" id="create_email">
+                <input type="text" class="user_info" id="create_email">
                 Username
-                <input type="text" class="create" id="create_username">
+                <input type="text" class="user_info" id="create_username">
                 Password
-                <input type="text" class="create" id="create_password">
+                <input type="text" class="user_info" id="create_password">
                 Confirm Password
-                <input type="text" class="create" id="create_confpassword">
+                <input type="text" class="user_info" id="create_confpassword">
                 Address (optional)
-                <input type="text" class="create" id="create_street">
-                <input type="text" class="create" id="create_city">
-                <input type="text" class="create" id="create_state">
-                <input type="text" class="create" id="create_zip">
+                <input type="text" class="user_info" id="create_street">
+                <input type="text" class="user_info" id="create_city">
+                <input type="text" class="user_info" id="create_state">
+                <input type="text" class="user_info" id="create_zip">
             </div>
 
             <button onclick="writeUserData()" style="font-size: 17px; margin-top: 10px;">CREATE ACCOUNT</button>
@@ -70,7 +70,7 @@
                 }).then(() => {
                     sessionStorage.setItem('username', document.getElementById('create_username').value);
                     console.log(sessionStorage.getItem('username'));
-                    window.location.href = 'search.html';
+                    window.location.href = 'user_profile.html';
                 });
 
             }

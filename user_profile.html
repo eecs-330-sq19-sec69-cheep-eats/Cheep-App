@@ -1,0 +1,105 @@
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="cheep.css"/>
+    </head>
+
+    <body>
+        <div id="screen">
+
+            <div id="header">
+                User Profile
+            </div>
+
+            <div id="information">
+                <p class="user_info" id="profile_username"></p>
+                <p class="user_info" id="profile_password"></p>
+
+                Email
+                <input type="text" class="user_info" id="profile_email">
+                Address
+                <input type="text" class="user_info" id="profile_street">
+                <input type="text" class="user_info" id="profile_city">
+                <input type="text" class="user_info" id="profile_state">
+                <input type="text" class="user_info" id="profile_zip">
+            </div>
+
+            <button onclick="saveUserData()" style="font-size: 17px; margin-top: 10px;">SAVE ACCOUNT</button>
+
+            <div id="menu">
+                <div class="menu_tab">
+                    <img id="mag_glass" src="images/mag_glass.png" style="width: 40px;">
+                </div>
+                <div class="menu_tab" style="border-left: 1px solid gray;">
+                    <img id="shop_cart" src="images/shop_cart.png" style="width: 40px;">
+                </div>
+                <div class="menu_tab" style="border-left: 1px solid gray; background-color: lightgray;">
+                    <img id="profile" src="images/profile.svg" style="width: 40px;">
+                </div>
+            </div>
+
+        </div>
+
+        <script>
+            console.log(sessionStorage.getItem('username'));
+        </script>
+
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+             https://firebase.google.com/docs/web/setup#config-web-app -->
+
+        <script>
+            // Your web app's Firebase configuration
+            var firebaseConfig = {
+                apiKey: "AIzaSyDnOwuo2b9OnJsVH0ErxUgarks1iKFDRM8",
+                authDomain: "cheep-app.firebaseapp.com",
+                databaseURL: "https://cheep-app.firebaseio.com",
+                projectId: "cheep-app",
+                storageBucket: "cheep-app.appspot.com",
+                messagingSenderId: "17385407188",
+                appId: "1:17385407188:web:b41fa17aaeda8b52"
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+        </script>
+
+        <script>
+            function readUserData(){
+                console.log('Read Function Called');
+
+                firebase.database().ref('/users/' + sessionStorage.getItem('username')).once('value').then(function(snapshot) {
+                    document.getElementById('profile_username').innerHTML = 'Username: ' + (snapshot.val() && snapshot.val().username);
+                    document.getElementById('profile_password').innerHTML = 'Password: ' + (snapshot.val() && snapshot.val().password);
+
+                    document.getElementById('profile_email').value = (snapshot.val() && snapshot.val().email);
+                    document.getElementById('profile_street').value = (snapshot.val() && snapshot.val().street);
+                    document.getElementById('profile_city').value = (snapshot.val() && snapshot.val().city);
+                    document.getElementById('profile_state').value = (snapshot.val() && snapshot.val().state);
+                    document.getElementById('profile_zip').value = (snapshot.val() && snapshot.val().zip);
+                });
+            }
+            readUserData();
+        </script>
+
+        <script>
+            function saveUserData(){
+                console.log('Save Function Called');
+
+                firebase.database().ref('users/'+sessionStorage.getItem('username')).update({
+                    email: document.getElementById('profile_email').value,
+                    street: document.getElementById('profile_street').value,
+                    city: document.getElementById('profile_city').value,
+                    state: document.getElementById('profile_state').value,
+                    zip: document.getElementById('profile_zip').value
+                });
+
+                alert('Changes Saved!');
+            }
+        </script>
+
+    </body>
+
+</html>
