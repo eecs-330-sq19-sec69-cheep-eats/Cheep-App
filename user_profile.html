@@ -12,19 +12,19 @@
             </div>
 
             <div id="information">
-                <p class="user_info" id="profile_username"></p>
-                <p class="user_info" id="profile_password"></p>
+                <p class="immutable" id="profile_username"></p>
+                <p class="immutable" id="profile_password"></p>
 
-                Email
-                <input type="text" class="user_info" id="profile_email">
-                Address
-                <input type="text" class="user_info" id="profile_street">
-                <input type="text" class="user_info" id="profile_city">
-                <input type="text" class="user_info" id="profile_state">
-                <input type="text" class="user_info" id="profile_zip">
+                <div class="piece">Email</div>
+                <div class="piece"><input type="text" class="user_info" id="profile_email"></div>
+                <div class="piece">Address</div>
+                <div class="piece"><input type="text" class="user_info" id="profile_street" placeholder="Street Address"></div>
+                <div class="piece"><input type="text" class="user_info" id="profile_city" placeholder="City"></div>
+                <div class="piece"><input type="text" class="small_piece" id="profile_state" placeholder="State">
+                <input type="text" class="small_piece" id="profile_zip" placeholder="ZIP"></div>
             </div>
 
-            <button onclick="saveUserData()" style="font-size: 17px; margin-top: 10px;">SAVE ACCOUNT</button>
+            <button onclick="saveUserData()" style="font-size: 16px; margin-top: 30px; width: 180px;">SAVE ACCOUNT</button>
 
             <div id="menu">
                 <div class="menu_tab">

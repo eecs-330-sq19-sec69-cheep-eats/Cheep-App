@@ -8,23 +8,31 @@
 
         <div id="screen">
 
-            <div id="information">
-                Email
-                <input type="text" class="user_info" id="create_email">
-                Username
-                <input type="text" class="user_info" id="create_username">
-                Password
-                <input type="text" class="user_info" id="create_password">
-                Confirm Password
-                <input type="text" class="user_info" id="create_confpassword">
-                Address (optional)
-                <input type="text" class="user_info" id="create_street">
-                <input type="text" class="user_info" id="create_city">
-                <input type="text" class="user_info" id="create_state">
-                <input type="text" class="user_info" id="create_zip">
+            <div id="header">
+                Create Account
             </div>
 
-            <button onclick="writeUserData()" style="font-size: 17px; margin-top: 10px;">CREATE ACCOUNT</button>
+            <div id="information">
+                <div class="piece">Email</div>
+                <div class="piece"><input type="text" class="user_info" id="create_email"></div>
+
+                <div class="piece">Username</div>
+                <div class="piece"><input type="text" class="user_info" id="create_username"></div>
+
+                <div class="piece">Password</div>
+                <div class="piece"><input type="text" class="user_info" id="create_password"></div>
+
+                <div class="piece">Confirm Password</div>
+                <div class="piece"><input type="text" class="user_info" id="create_confpassword"></div>
+
+                <div class="piece">Address (optional)</div>
+                <div class="piece"><input type="text" class="user_info" id="create_street" placeholder="Street Address"></div>
+                <div class="piece"><input type="text" class="user_info" id="create_city" placeholder="City"></div>
+                <div class="piece"><input type="text" class="small_piece" id="create_state" placeholder="State">
+                <input type="text" class="small_piece" id="create_zip" placeholder="ZIP"></div>
+            </div>
+
+            <button onclick="writeUserData()" style="font-size: 16px; margin-top: 20px; width: 180px;">CREATE ACCOUNT</button>
 
         </div>
 
@@ -70,7 +78,7 @@
                 }).then(() => {
                     sessionStorage.setItem('username', document.getElementById('create_username').value);
                     console.log(sessionStorage.getItem('username'));
-                    window.location.href = 'user_profile.html';
+                    window.location.href = 'enter.html';
                 });
 
             }
