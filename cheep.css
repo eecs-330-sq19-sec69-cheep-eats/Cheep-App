@@ -1,17 +1,29 @@
 *{font-family: "Open Sans", SansSerif; }
 
+a{
+    text-decoration: inherit;
+    color: inherit;
+}
+
+@media only screen and (min-width: 600px) {
+    #screen {
+        height: 530px;
+        width: 300px;
+        margin: 105px 23px;
+        text-align: center;
+        border: lightgray solid 2px;
+    }
+}
 body{
-    background-image: url("images/iphoneOL.jpg");
+    /*background-image: url("images/iphoneOL.jpg");*/
     background-repeat: no-repeat;
     margin: 0;
     padding: 0;
 }
 
 #screen {
-    height: 530px;
-    width: 300px;
-    margin: 105px 23px;
-    text-align: center;
+    /*height: 100%;*/
+    /*width: 100%;*/
 }
 
 #logo {
@@ -34,20 +46,6 @@ body{
     margin-top: 70px;
 }
 
-#search{
-    width: 60%
-}
-
-#search_bar{
-    width: 60%;
-
-}
-
-.search_button{
-    width: 50px;
-    height: 50px;
-}
-
 #information {
 
 }
@@ -62,8 +60,6 @@ body{
 
 .material_icons{
     font-family: 'Material Icons';
-    display: inline-block;
-    float: left;
 }
 
 #header{
@@ -80,7 +76,7 @@ body{
 }
 
 #search{
-    width: 75%;
+    width: 70%;
     display: inline-block;
     /*background-color: blue;*/
     /*position: relative;*/
@@ -91,7 +87,7 @@ body{
 }
 
 #search_field{
-    width: 75%;
+    width: 70%;
     border: none;
     height: 36px;
     /*position: relative;*/
@@ -101,8 +97,12 @@ body{
     outline: none;
 }
 
-#search_field input:focus{
-    border:none;
+#search_icon{
+    font-size: 20px;
+    margin: 10px 5px 10px 10px;
+    color: gray;
+    display: inline-block;
+    float: left;
 }
 
 .search_button{
@@ -118,12 +118,6 @@ body{
 #search_wrapper {
     display: inline;
     position: relative;
-}
-
-#search_icon{
-    font-size: 20px;
-    margin: 10px;
-    color: gray;
 }
 
 #results{
@@ -209,4 +203,75 @@ body{
 .search_entry_add:hover{
     background-color: white;
     color: deepskyblue;
+}
+
+
+
+/*ENTER*/
+
+
+#SE_close{
+    height: 60px;
+    width: 100%
+
+}
+
+#SE_close_icon{
+    float: right;
+    font-size: 40px;
+    margin: 10px;
+    color: gray;
+}
+
+#SE_search_container{
+    border-bottom: gray 2px solid;
+    height: 43px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#SE_search_icon{
+    position: relative;
+    top: 4px;
+    font-size: 30px;
+    color: gray;
+}
+
+#SE_search_field{
+    height: 40px;
+    width: 85%;
+    padding: 10px 5px;
+    outline: none;
+    border: none;
+    font-size: 30px;
+    /*font-weight: bold;*/
+    background-color: transparent;
+}
+
+#SE_search_history_title{
+    font-size: 10pt;
+    margin-left: 8%;
+    text-align: left;
+    color: gold;
+}
+
+#SE_search_history{
+    margin-top: 25px;
+}
+
+#SE_search_history ul{
+    padding: 0;
+    width: 85%;
+    margin-left: 15%;
+}
+
+#SE_search_history li{
+    list-style: none;
+    font-weight: bold;
+    padding: 4px;
+    text-decoration: underline;
+    font-style: italic;
+    text-align: left;
+    font-size: 18pt;
 }
