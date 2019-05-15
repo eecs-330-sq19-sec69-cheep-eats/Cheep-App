@@ -15,25 +15,25 @@
                 <p class="immutable" id="profile_username"></p>
                 <p class="immutable" id="profile_password"></p>
 
-                <div class="piece">Email</div>
+                <div class="header-piece" style="margin-top: 30px;">Email</div>
                 <div class="piece"><input type="text" class="user_info" id="profile_email"></div>
-                <div class="piece">Address</div>
-                <div class="piece"><input type="text" class="user_info" id="profile_street" placeholder="Street Address"></div>
-                <div class="piece"><input type="text" class="user_info" id="profile_city" placeholder="City"></div>
+                <div class="header-piece">Address</div>
+                <div class="header-piece"><input type="text" class="user_info" id="profile_street" placeholder="Street Address"></div>
+                <div class="header-piece"><input type="text" class="user_info" id="profile_city" placeholder="City"></div>
                 <div class="piece"><input type="text" class="small_piece" id="profile_state" placeholder="State">
                 <input type="text" class="small_piece" id="profile_zip" placeholder="ZIP"></div>
             </div>
 
-            <button onclick="saveUserData()" style="font-size: 16px; margin-top: 30px; width: 180px;">SAVE ACCOUNT</button>
+            <button onclick="saveUserData()" class="account_button" style="margin-top: 30px;">SAVE ACCOUNT</button>
 
             <div id="menu">
                 <div class="menu_tab">
-                    <img id="mag_glass" src="images/mag_glass.png" style="width: 40px;">
+                    <a href="enter.html" style="text-decoration: none; color: black;"><img id="mag_glass" src="images/mag_glass.png" style="width: 40px;"></a>
                 </div>
                 <div class="menu_tab" style="border-left: 1px solid gray;">
                     <img id="shop_cart" src="images/shop_cart.png" style="width: 40px;">
                 </div>
-                <div class="menu_tab" style="border-left: 1px solid gray; background-color: lightgray;">
+                <div class="menu_tab" style="border-left: 1px solid gray; background-color: #f9ef90;">
                     <img id="profile" src="images/profile.svg" style="width: 40px;">
                 </div>
             </div>

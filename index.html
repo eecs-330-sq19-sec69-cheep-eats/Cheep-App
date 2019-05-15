@@ -14,15 +14,15 @@
             </div>
 
             <div id="login">
-                <div class="piece" style="padding-top: 50px">Log In</div>
-                <div class="piece"><input type="text" placeholder="username" class="user_info" id="login_username"></div>
-                <div class="piece"><input type="text" placeholder="password" class="user_info" id="login_password"></div>
-                <button style="font-size: 16px; width: 180px;" onclick="login()"><a href="enter.html" style="text-decoration: none; color: black;">LOG IN</a></button>
+                <div class="header-piece" style="margin-top: 55px">Log In</div>
+                <div class="header-piece"><input type="text" placeholder="Username" class="user_info" id="login_username"></div>
+                <div class="piece"><input type="text" placeholder="Password" class="user_info" id="login_password"></div>
+                <button class="account_button" onclick="login()">LOG IN</button>
             </div>
             
 
-            <div style="font-size: 15px; margin-top: 125px;">New to Cheep?</div>
-            <button style="font-size: 16px; margin-top: 10px; width: 180px;"><a href="create_account.html" style="text-decoration: none; color: black;">CREATE AN ACCOUNT</a></button>
+            <div style="font-size: 15px; margin-top: 115px;">New to Cheep?</div>
+            <button class="account_button" style="margin-top: 10px;"><a href="create_account.html" style="text-decoration: none; color: white;">CREATE AN ACCOUNT</a></button>
 
         </div>
 
@@ -64,7 +64,7 @@
                         }
                         else{
                             sessionStorage.setItem('username',snapshot.child('username').val())
-                            window.location.href = 'search.html';
+                            window.location.href = 'enter.html';
                         }
                 }));
 
