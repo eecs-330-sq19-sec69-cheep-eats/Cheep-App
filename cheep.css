@@ -1,4 +1,32 @@
+
+
+/*
+    THIS SECTION IS FOR UNIVERSAL HTML ELEMENTS
+    CHANGING SOMETHING HERE WILL AFFECT ALL PAGES
+*/
+
+
 *{font-family: "Open Sans", SansSerif; }
+
+.material_icons{
+    font-family: 'Material Icons';
+}
+
+@media only screen and (min-width: 600px) {
+    #screen {
+        height: 530px;
+        width: 300px;
+        margin: 106px 31px;
+        /* lets put this only on html elements that need to be center aligned */
+        text-align: center;
+        position: relative;
+    }
+
+    body{
+        background-image: url("images/iphoneOL.jpg");
+        background-repeat: no-repeat;
+    }
+}
 
 a{
     text-decoration: inherit;
@@ -6,19 +34,46 @@ a{
 }
 
 body{
-    background-image: url("images/iphoneOL.jpg");
-    background-repeat: no-repeat;
     margin: 0;
     padding: 0;
 }
 
-#screen {
-    height: 530px;
-    width: 300px;
-    margin: 106px 31px;
-    text-align: center;
+#header{
+    width: 100%;
     position: relative;
+    height: 18px;
+    padding: 20px 0;
+    border-bottom: gray 1px solid;
+    background-color: #f9ef90;
+    font-size: 21px;
+    font-weight: bold;
+    color: orange;
 }
+
+#menu {
+    border-top: 1px solid gray;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /*width: 300px;*/
+    height: 55px;
+}
+
+.menu_tab {
+    float: left;
+    /*width: 99px;*/
+    width: 33%;
+    height: 40px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+
+/*
+    LOGIN PAGE
+    login.html
+*/
+
 
 #logo {
     color: orange;
@@ -51,6 +106,13 @@ body{
     display: block;
 }
 
+
+/*
+    ACCOUNT INFO PAGE
+    account_info.html
+*/
+
+
 .user_info {
     width: 180px;
     font-family: Helvetica;
@@ -72,42 +134,21 @@ body{
 }
 
 
+/*
+    SEARCH RESULTS PAGE
+    results.html
+*/
 
 
-
-#menu {
-    border-top: 1px solid gray;
-    position: absolute;
-    bottom: 0;
-    width: 300px;
-    height: 55px;
-}
-
-.menu_tab {
-    float: left;
-    width: 99px;
-    height: 40px;
-    padding-top: 7px;
-    padding-bottom: 7px;
-}
-
-
-
-
-.material_icons{
-    font-family: 'Material Icons';
-}
-
-#header{
+#search_header{
     width: 100%;
     position: relative;
     height: 18px;
     padding: 20px 0;
     border-bottom: gray 1px solid;
-    background-color: #f9ef90;
     font-size: 21px;
-    font-weight: bold;
-    color: orange;
+    min-height: 40px;
+    border-bottom: lightgray 1px solid;
 }
 
 #bird{
@@ -177,44 +218,50 @@ body{
     padding: 0;
 }
 
-.search_entry{
+.result{
     min-height: 80px;
     max-height: 100px;
     border: solid 1px lightgrey;
     border-radius: 10px;
 }
 
-.search_img_wrapper{
+.result_img_wrapper{
     padding: 8px 8px 0 8px;
     height: 60px;
     width: 60px;
     float: left;
 }
 
-.search_img{
+.result_img{
     height: 80%;
     margin: 5% auto;
     display: block;
 }
 
-.search_entry h1{
+.result h1{
     font-size: 10pt;
     margin: 5px 0 0 0;
+    /*remove this later*/
+    text-align: left;
 }
 
-.search_entry h2{
+.result h2{
     font-size: 8pt;
     color: gray;
     margin: 0;
+    /*remove this later*/
+    text-align: left;
 }
 
-.search_entry_lower{
+.result_lower{
     width: 100%;
     /*height: 20px;*/
     display:inline-block;
+    /*remove this later*/
+    text-align: left;
 }
 
-.search_entry_price{
+.result_price{
     padding: 0 0 0 20px;
     color: gold;
     font-size: 8pt;
@@ -222,11 +269,11 @@ body{
     display:inline-block;
 }
 
-.search_entry_price_icon{
+.result_price_icon{
 
 }
 
-.search_entry_add{
+.result_add{
     border-radius: 4px;
     height: 30px;
     min-width: 80px;
@@ -241,19 +288,21 @@ body{
     /*padding: ;*/
 }
 
-.search_entry_add:hover{
+.result_add:hover{
     background-color: white;
     color: deepskyblue;
 }
 
 
-/*ENTER*/
+/*
+    SEARCH ENTRY PAGE
+    search_entry.html
+*/
 
 
 #SE_close{
     height: 60px;
     width: 100%
-
 }
 
 #SE_close_icon{
@@ -265,7 +314,7 @@ body{
 
 #SE_search_container{
     border-bottom: gray 2px solid;
-    margin-top: 35px;
+    /*margin-top: 35px;*/
     height: 43px;
     width: 90%;
     margin-left: auto;
