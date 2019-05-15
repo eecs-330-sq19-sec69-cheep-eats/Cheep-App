@@ -1,64 +1,10 @@
 *{font-family: "Open Sans", SansSerif; }
 
+
 body{
-    background-image: url("images/iphoneOL.jpg");
-    background-repeat: no-repeat;
     margin: 0;
     padding: 0;
 }
-
-#screen {
-    height: 530px;
-    width: 300px;
-    margin: 105px 23px;
-    text-align: center;
-}
-
-#logo {
-    color: orange;
-    font-family: Lucida Grande;
-    font-size: 45px;
-}
-
-.login {
-    margin-top: 25px;
-}
-
-.login_input {
-    margin: 5px;
-    align: middle;
-}
-
-#login_bird{
-    height: 65px;
-    margin-top: 70px;
-}
-
-#search{
-    width: 60%
-}
-
-#search_bar{
-    width: 60%;
-
-}
-
-.search_button{
-    width: 50px;
-    height: 50px;
-}
-
-#information {
-
-}
-
-.create {
-
-}
-
-
-
-
 
 .material_icons{
     font-family: 'Material Icons';

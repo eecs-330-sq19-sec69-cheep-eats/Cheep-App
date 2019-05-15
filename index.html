@@ -1,19 +1,51 @@
 <html>
-<head>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="cheep.css"/>
-</head>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="cheep.css"/>
+    </head>
 
-<body>
-<div id="header">
-    <img id="bird" src="images/bird.png">
-    <div id="search">
-        <input type="text" id="search_bar">
-    </div>
+    <body>
+        <div id="screen">
+            <div id="logo">
+                <img id="login_bird" src="images/chick_3.png" style="margin-left: 10px">
+                <!--<input type="text" id="search_bar">-->
 
-</div>
+                Cheep
+            </div>
 
-</body>
+            <div class="login">
+                <div>Login</div>
+                <input type="text" class="login_input" id="login_username">
+                <input type="text" class="login_input" id="login_password">
+                <button>LOGIN</button>
+            </div>
 
+            <div style="font-size: 15px; margin-top: 200px;">New to Cheep?</div>
+            <button style="font-size: 17px; margin-top: 10px;"><a href="create_account.html" style="text-decoration: none; color: black;">CREATE AN ACCOUNT</a></button>
+
+        </div>
+
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+             https://firebase.google.com/docs/web/setup#config-web-app -->
+
+        <script>
+            // Your web app's Firebase configuration
+            var firebaseConfig = {
+                apiKey: "AIzaSyDnOwuo2b9OnJsVH0ErxUgarks1iKFDRM8",
+                authDomain: "cheep-app.firebaseapp.com",
+                databaseURL: "https://cheep-app.firebaseio.com",
+                projectId: "cheep-app",
+                storageBucket: "cheep-app.appspot.com",
+                messagingSenderId: "17385407188",
+                appId: "1:17385407188:web:b41fa17aaeda8b52"
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+        </script>
+
+    </body>
 
 </html>
