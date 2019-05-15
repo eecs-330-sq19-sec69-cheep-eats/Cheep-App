@@ -71,8 +71,8 @@
                 console.log('Read Function Called');
 
                 firebase.database().ref('/users/' + sessionStorage.getItem('username')).once('value').then(function(snapshot) {
-                    document.getElementById('profile_username').innerHTML = 'Username: ' + (snapshot.val() && snapshot.val().username);
-                    document.getElementById('profile_password').innerHTML = 'Password: ' + (snapshot.val() && snapshot.val().password);
+                    document.getElementById('profile_username').innerHTML = "Username: \t" + (snapshot.val() && snapshot.val().username);
+                    document.getElementById('profile_password').innerHTML = "Password: \t" + (snapshot.val() && snapshot.val().password);
 
                     document.getElementById('profile_email').value = (snapshot.val() && snapshot.val().email);
                     document.getElementById('profile_street').value = (snapshot.val() && snapshot.val().street);
