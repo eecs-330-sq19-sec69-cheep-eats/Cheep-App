@@ -28,8 +28,8 @@
                 <div class="header-piece">Address (optional)</div>
                 <div class="header-piece"><input type="text" class="user_info" id="create_street" placeholder="Street Address"></div>
                 <div class="header-piece"><input type="text" class="user_info" id="create_city" placeholder="City"></div>
-                <div class="piece"><input type="text" class="small_piece" id="create_state" placeholder="State">
-                <input type="text" class="small_piece" id="create_zip" placeholder="ZIP"></div>
+                <div class="piece"><input type="text" class="user_info small_piece" id="create_state" placeholder="State">
+                <input type="text" class="user_info small_piece" id="create_zip" placeholder="ZIP"></div>
             </div>
 
             <button onclick="writeUserData()" class="account_button" style="margin-top: 30px;">CREATE ACCOUNT</button>
@@ -78,7 +78,7 @@
                 }).then(() => {
                     sessionStorage.setItem('username', document.getElementById('create_username').value);
                     console.log(sessionStorage.getItem('username'));
-                    window.location.href = 'enter.html';
+                    window.location.href = 'search_landing.html';
                 });
 
             }

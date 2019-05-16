@@ -115,10 +115,12 @@ body{
 
 .user_info {
     width: 180px;
+    line-height: 15px;
     font-family: Helvetica;
+    font-size: 13px;
 }
 
-.small_piece {
+.user_info.small_piece {
     width: 88px;
 }
 
@@ -314,7 +316,7 @@ body{
 
 #SE_search_container{
     border-bottom: gray 2px solid;
-    /*margin-top: 35px;*/
+    margin-top: 15px;
     height: 43px;
     width: 90%;
     margin-left: auto;
