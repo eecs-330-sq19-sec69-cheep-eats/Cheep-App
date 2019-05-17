@@ -1,6 +1,5 @@
 <html>
 <head>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="cheep.css"/>
 </head>
@@ -13,13 +12,34 @@
         <img id="bird" src="images/bird.png">
     </div>
 
-    <a href="search_entry.html">
+    <!--<a href="search_entry.html">-->
         <div id="search">
             <span class="material_icons" id="search_icon">search</span>
-            <!--    <input type="text" id="search_field">-->
-        </div>
-    </a>
+            <input type="text" id="search_field">
 
+            <div id="search_window">
+                <div id="SE_close">
+                    <a href="results.html"><span class="material_icons" id="SE_close_icon"> close </span></a>
+                </div>
+
+                <div id="SE_search_container">
+                    <span class="material_icons" id="SE_search_icon"> search </span>
+                    <input type="text" id="SE_search_field" placeholder="Search...">
+                </div>
+
+                <div id="SE_search_history">
+                    <div id="SE_search_history_title"> <span class="material_icons"> history </span> RECENT SEARCHES </div>
+                    <ul>
+                        <li> <a href="results.html">Milk</a></li>
+                        <li> Eggs </li>
+                        <li> Flour </li>
+                        <li> Oil </li>
+                        <li> Syrup </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    <!--</a>-->
 </div>
 
 <div id="results">
@@ -67,6 +87,7 @@
         </li>
     </ul>
 </div>
+
 
 </div>
 </body>
