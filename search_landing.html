@@ -14,7 +14,7 @@
 
             <div id="SE_search_container">
                 <span class="material_icons" id="SE_search_icon"> search </span>
-                <input type="text" id="SE_search_field" placeholder="Search...">
+                <input type="text" id="SE_search_field" placeholder="Search..." onkeydown="if (event.keyCode === 13){searchProductData();}">
             </div>
 
             <div id="SE_search_history">
@@ -47,6 +47,60 @@
 
         <script>
             console.log(sessionStorage.getItem('username'));
+        </script>
+
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+             https://firebase.google.com/docs/web/setup#config-web-app -->
+
+        <script>
+            // Your web app's Firebase configuration
+            var firebaseConfig = {
+                apiKey: "AIzaSyDnOwuo2b9OnJsVH0ErxUgarks1iKFDRM8",
+                authDomain: "cheep-app.firebaseapp.com",
+                databaseURL: "https://cheep-app.firebaseio.com",
+                projectId: "cheep-app",
+                storageBucket: "cheep-app.appspot.com",
+                messagingSenderId: "17385407188",
+                appId: "1:17385407188:web:b41fa17aaeda8b52"
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+        </script>
+
+        <script>
+            function searchProductData(){
+                var searchText = document.getElementById('SE_search_field').value;
+                console.log(searchText);
+
+                console.log('Search Function Called');
+
+                var productResults = [];
+
+                firebase.database().ref('/products').orderByKey().on('child_added', function(snapshot) {
+
+                    if(((snapshot.val().Name).toLowerCase()).includes(searchText.toLowerCase())){
+                        productResults.push(snapshot.val());
+                    }
+
+                    //NOTE - MUST CHANGE IF CHANGE ITEMS IN DATABASE B/C THIS JANKY
+                    if(snapshot.key == 19){
+
+                        console.log(productResults.length);
+                        //console.log(productResults);
+
+                        sessionStorage.setItem("searchResults", JSON.stringify(productResults));
+                        //console.log(JSON.parse(sessionStorage.getItem("searchResults")));
+                        window.location.href = 'results.html';
+
+                    }
+
+                });
+
+            }
         </script>
 
     </body>
