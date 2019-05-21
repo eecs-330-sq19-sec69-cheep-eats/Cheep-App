@@ -1,96 +1,152 @@
 <html>
-<head>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="cheep.css"/>
-</head>
+    <head>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="cheep.css"/>
+    </head>
 
-<body>
-<div id="screen">
+    <body>
+        <div id="screen">
 
-<div id="search_header">
-    <div id="bird_wrapper">
-        <img id="bird" src="images/bird.png">
-    </div>
-
-    <!--<a href="search_entry.html">-->
-        <div id="search">
-            <span class="material_icons" id="search_icon">search</span>
-            <input type="text" id="search_field">
-
-            <div id="search_window">
-                <div id="SE_close">
-                    <a href="results.html"><span class="material_icons" id="SE_close_icon"> close </span></a>
+            <div id="search_header">
+                <div id="bird_wrapper">
+                    <img id="bird" src="images/bird.png">
                 </div>
 
-                <div id="SE_search_container">
-                    <span class="material_icons" id="SE_search_icon"> search </span>
-                    <input type="text" id="SE_search_field" placeholder="Search...">
-                </div>
+                <!--<a href="search_entry.html">-->
+                    <div id="search">
+                        <span class="material_icons" id="search_icon">search</span>
+                        <input type="text" id="search_field">
 
-                <div id="SE_search_history">
-                    <div id="SE_search_history_title"> <span class="material_icons"> history </span> RECENT SEARCHES </div>
-                    <ul>
-                        <li> <a href="results.html">Milk</a></li>
-                        <li> Eggs </li>
-                        <li> Flour </li>
-                        <li> Oil </li>
-                        <li> Syrup </li>
-                    </ul>
-                </div>
+                        <div id="search_window">
+                            <div id="SE_close">
+                                <a href="results.html"><span class="material_icons" id="SE_close_icon"> close </span></a>
+                            </div>
+
+                            <div id="SE_search_container">
+                                <span class="material_icons" id="SE_search_icon"> search </span>
+                                <input type="text" id="SE_search_field" placeholder="Search..." onkeydown="if (event.keyCode === 13){searchProductData();}">
+                            </div>
+
+                            <div id="SE_search_history">
+                                <div id="SE_search_history_title"> <span class="material_icons"> history </span> RECENT SEARCHES </div>
+                                <ul>
+                                    <li> <a href="results.html">Milk</a></li>
+                                    <li> Eggs </li>
+                                    <li> Flour </li>
+                                    <li> Oil </li>
+                                    <li> Syrup </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                <!--</a>-->
             </div>
+
+            <div id="results">
+                <ul>
+                    <a href="item_details.html"><li class="result">
+                        <div class="result_img_wrapper">
+                            <img src="https://images-na.ssl-images-amazon.com/images/I/81uQm2SqxhL._SY606_.jpg" class="result_img">
+                        </div>
+
+                        <h1> Tuscan Dairy whole milk</h1>
+                        <h2> 1 gal</h2>
+
+                        <div class="result_lower">
+                            <span class="result_price"> 2.99 at Target</span>
+                            <button class="result_add" content="Add"> Add </button>
+                        </div>
+                    </li></a>
+
+                    <li class="result">
+                        <div class="result_img_wrapper">
+                            <img src="https://images-na.ssl-images-amazon.com/images/I/81uQm2SqxhL._SY606_.jpg" class="result_img">
+                        </div>
+
+                        <h1> Tuscan Dairy whole milk</h1>
+                        <h2> 1 gal</h2>
+
+                        <div class="result_lower">
+                            <span class="result_price"> 2.99 at Target</span>
+                            <button class="result_add" content="Add"> Add </button>
+                        </div>
+                    </li>
+
+                    <li class="result">
+                        <div class="result_img_wrapper">
+                            <img src="https://images-na.ssl-images-amazon.com/images/I/81uQm2SqxhL._SY606_.jpg" class="result_img">
+                        </div>
+
+                        <h1> Tuscan Dairy whole milk</h1>
+                        <h2> 1 gal</h2>
+
+                        <div class="result_lower">
+                            <span class="result_price"> 2.99 at Target</span>
+                            <button class="result_add" content="Add"> Add </button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+
         </div>
-    <!--</a>-->
-</div>
 
-<div id="results">
-    <ul>
-        <a href="item_details.html"><li class="result">
-            <div class="result_img_wrapper">
-                <img src="https://images-na.ssl-images-amazon.com/images/I/81uQm2SqxhL._SY606_.jpg" class="result_img">
-            </div>
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>
 
-            <h1> Tuscan Dairy whole milk</h1>
-            <h2> 1 gal</h2>
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+             https://firebase.google.com/docs/web/setup#config-web-app -->
 
-            <div class="result_lower">
-                <span class="result_price"> 2.99 at Target</span>
-                <button class="result_add" content="Add"> Add </button>
-            </div>
-        </li></a>
+        <script>
+            // Your web app's Firebase configuration
+            var firebaseConfig = {
+                apiKey: "AIzaSyDnOwuo2b9OnJsVH0ErxUgarks1iKFDRM8",
+                authDomain: "cheep-app.firebaseapp.com",
+                databaseURL: "https://cheep-app.firebaseio.com",
+                projectId: "cheep-app",
+                storageBucket: "cheep-app.appspot.com",
+                messagingSenderId: "17385407188",
+                appId: "1:17385407188:web:b41fa17aaeda8b52"
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+        </script>
 
-        <li class="result">
-            <div class="result_img_wrapper">
-                <img src="https://images-na.ssl-images-amazon.com/images/I/81uQm2SqxhL._SY606_.jpg" class="result_img">
-            </div>
+        <script>
+            function searchProductData(){
+                var searchText = document.getElementById('SE_search_field').value;
+                console.log(searchText);
 
-            <h1> Tuscan Dairy whole milk</h1>
-            <h2> 1 gal</h2>
+                console.log('Search Function Called');
 
-            <div class="result_lower">
-                <span class="result_price"> 2.99 at Target</span>
-                <button class="result_add" content="Add"> Add </button>
-            </div>
-        </li>
+                var productResults = [];
 
-        <li class="result">
-            <div class="result_img_wrapper">
-                <img src="https://images-na.ssl-images-amazon.com/images/I/81uQm2SqxhL._SY606_.jpg" class="result_img">
-            </div>
+                firebase.database().ref('/products').orderByChild("Name").on('child_added', function(snapshot) {
 
-            <h1> Tuscan Dairy whole milk</h1>
-            <h2> 1 gal</h2>
+                    if(((snapshot.val().Name).toLowerCase()).includes(searchText.toLowerCase())){
+                        productResults.push(snapshot.val());
+                    }
 
-            <div class="result_lower">
-                <span class="result_price"> 2.99 at Target</span>
-                <button class="result_add" content="Add"> Add </button>
-            </div>
-        </li>
-    </ul>
-</div>
+                    //NOTE - MUST CHANGE IF CHANGE ITEMS IN DATABASE B/C THIS JANKY
+                    if(snapshot.key == 12){
 
+                        console.log(productResults.length);
+                        //console.log(productResults);
 
-</div>
-</body>
+                        sessionStorage.setItem("searchResults", JSON.stringify(productResults));
+                        //console.log(JSON.parse(sessionStorage.getItem("searchResults")));
+                        window.location.href = 'results.html';
+
+                    }
+
+                });
+
+            }
+            console.log(JSON.parse(sessionStorage.getItem('searchResults')));
+        </script>
+
+    </body>
 
 
 </html>
