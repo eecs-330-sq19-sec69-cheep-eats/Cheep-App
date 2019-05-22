@@ -15,7 +15,7 @@
     <!--<a href="search_entry.html">-->
         <div id="search">
             <span class="material_icons" id="search_icon">search</span>
-            <input type="text" id="search_field">
+            <input type="text" id="search_field" onkeydown="if (event.keyCode === 13){searchProductData();}">
 
             <div id="search_window">
                 <div id="SE_close">
@@ -72,8 +72,6 @@
 
     <script src="results.js"></script>
 
-        </div>
-
         <!-- The core Firebase JS SDK is always required and must be listed first -->
         <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>
@@ -94,39 +92,6 @@
             };
             // Initialize Firebase
             firebase.initializeApp(firebaseConfig);
-        </script>
-
-        <script>
-            function searchProductData(){
-                var searchText = document.getElementById('SE_search_field').value;
-                console.log(searchText);
-
-                console.log('Search Function Called');
-
-                var productResults = [];
-
-                firebase.database().ref('/products').orderByChild("Name").on('child_added', function(snapshot) {
-
-                    if(((snapshot.val().Name).toLowerCase()).includes(searchText.toLowerCase())){
-                        productResults.push(snapshot.val());
-                    }
-
-                    //NOTE - MUST CHANGE IF CHANGE ITEMS IN DATABASE B/C THIS JANKY
-                    if(snapshot.key == 12){
-
-                        console.log(productResults.length);
-                        //console.log(productResults);
-
-                        sessionStorage.setItem("searchResults", JSON.stringify(productResults));
-                        //console.log(JSON.parse(sessionStorage.getItem("searchResults")));
-                        window.location.href = 'results.html';
-
-                    }
-
-                });
-
-            }
-            console.log(JSON.parse(sessionStorage.getItem('searchResults')));
         </script>
 
     </body>

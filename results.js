@@ -115,3 +115,42 @@ function buildResultsList() {
 
 
 buildResultsList();
+
+
+function searchProductData(){
+    var searchText = document.getElementById('search_field').value;
+
+    console.log(searchText);
+
+    console.log('Search Function Called');
+
+    var productResults = [];
+
+    firebase.database().ref('/products').orderByChild("Name").on('child_added', function(snapshot) {
+
+        if(((snapshot.val().Name).toLowerCase()).includes(searchText.toLowerCase())){
+            productResults.push(snapshot.val());
+        }
+
+        //NOTE - MUST CHANGE IF CHANGE ITEMS IN DATABASE B/C THIS JANKY
+        if(snapshot.key == 12){
+
+            console.log(productResults.length);
+            //console.log(productResults);
+
+            sessionStorage.setItem("searchResults", JSON.stringify(productResults));
+            //console.log(JSON.parse(sessionStorage.getItem("searchResults")));
+            window.location.href = 'results.html';
+
+        }
+
+    });
+
+}
+
+console.log(JSON.parse(sessionStorage.getItem('searchResults')));
+
+
+results = JSON.parse(sessionStorage.getItem('searchResults'));
+buildResultsList();
+
