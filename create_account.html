@@ -17,7 +17,7 @@
                 <div class="piece"><input type="text" class="user_info" id="create_email"></div>
 
                 <div class="header-piece">Username</div>
-                <div class="piece"><input type="text" class="user_info" id="create_username"></div>
+                <div class="piece"><input type="text" class="user_info" id="create_username" required></div>
 
                 <div class="header-piece">Password</div>
                 <div class="piece"><input type="password" class="user_info" id="create_password"></div>
@@ -32,7 +32,7 @@
                 <input type="text" class="user_info small_piece" id="create_zip" placeholder="ZIP"></div>
             </div>
 
-            <button onclick="writeUserData()" class="account_button" style="margin-top: 30px;">CREATE ACCOUNT</button>
+            <button onclick="writeUserData()" class="account_button" type="submit" style="margin-top: 30px;">CREATE ACCOUNT</button>
 
         </div>
 
@@ -62,8 +62,13 @@
             function writeUserData(){
                 console.log('Write Function Called');
 
+                if(document.getElementById('create_username').value == ""){
+                    alert('Username field is required.');
+                    return;
+                }
+
                 if((document.getElementById('create_password').value) !== (document.getElementById('create_confpassword').value)){
-                    alert('Password and Confirm Password fields do not match')
+                    alert('Password and Confirm Password fields do not match');
                     return;
                 }
 

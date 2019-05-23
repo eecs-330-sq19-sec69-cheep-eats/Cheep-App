@@ -102,7 +102,7 @@ function buildResultsList() {
             rslElement.classList.add("result_store_list");
             rLowerElement.appendChild(rslElement);
 
-            for(s = 0; s < 5; s++){
+            for(let s = 0; s < 5; s++){
                 if(prices[s] !== "") {
                     var logo = document.createElement("img");
                     logo.setAttribute("src", storeLogos[s]);
@@ -128,6 +128,7 @@ buildResultsList();
 
 function searchProductData(){
     var searchText = document.getElementById('search_field').value;
+    sessionStorage.setItem('searchText',searchText);
 
     console.log(searchText);
 
