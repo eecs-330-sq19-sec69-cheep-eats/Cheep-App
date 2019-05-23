@@ -269,7 +269,7 @@ body{
 #results{
     /*margin: 2%;*/
     width: 100%;
-    height: 84.5%;
+    height: 74%;
     overflow-y: scroll;
 }
 
@@ -542,6 +542,7 @@ body{
 .store_results_wrapper {
     margin-top: 20px;
     overflow-y: scroll;
+    overflow-x: hidden;
     outline: 1px dotted black;
     height: 165px;
     width: 300px;
@@ -594,7 +595,7 @@ body{
     width: 100%;
     height: 100%;
 
-    /*display: none;*/
+    display: none;
 }
 
 #dark_box{
