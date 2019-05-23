@@ -8,9 +8,9 @@
 <div id="screen">
 
 <div id="search_header">
-    <div id="bird_wrapper">
-        <img id="bird" src="images/bird.png">
-    </div>
+    <!--<div id="bird_wrapper">-->
+        <!--<img id="bird" src="images/bird.png">-->
+    <!--</div>-->
 
     <!--<a href="search_entry.html">-->
         <div id="search">
@@ -38,7 +38,11 @@
                     </ul>
                 </div>
             </div>
+
         </div>
+    <div id="filter_icon_wrapper">
+        <span id="filter_icon" class="material_icons">tune</span>
+    </div>
     <!--</a>-->
 </div>
 
@@ -66,8 +70,51 @@
                 <!--<button class="result_add" content="Add"> Add </button>-->
             <!--</div>-->
 
-        </div>
     </div>
+</div>
+
+<div id="filter_popup">
+    <div filter_header>
+        <button class="filter_close"> <span class="material_icons"> arrow_back_ios </span> </button>
+        <input type="button" class="filter_apply_button" content="Clear Filters">
+        <input type="button" class="filter_close_button" content="Apply Filters">
+    </div>
+
+    <!--<fieldset>-->
+        <h1> Stores </h1>
+        <div id="DDs_button" class="filter_option">
+            D&D's
+            <input type="checkbox" id="DDs_box">
+        </div>
+        <div id="Jewel_button" class="filter_option">
+            Jewel Osco
+            <input type="checkbox" id="Jewel_box">
+        </div>
+        <div id="Target_buton" class="filter_option">
+            Target
+            <input type="checkbox" id="Target_box">
+        </div>
+        <div id="TJ_button" class="filter_option">
+            Trader Joe's
+            <input type="checkbox" id="TJ_box">
+        </div>
+        <div id="WF_button" class="filter_option">
+            Whole Foods
+            <input type="checkbox" id="WF_box">
+        </div>
+
+        <h1> Price </h1>
+        <input type="text" id="filter_price_low" class="filter_price_field" >
+        <input type="text" id="filter_price_high" class="filter_price_field" >
+
+
+    <!--</fieldset>-->
+
+
+</div>
+
+
+
 </div>
 
     <script src="results.js"></script>

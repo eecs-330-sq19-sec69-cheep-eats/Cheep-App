@@ -183,15 +183,26 @@ body{
     display: inline-block;
 }
 
+#filter_icon{
+    height: 40px;
+    margin: 20px 0 0 20px;
+    display: inline-block;
+    font-size: 25px;
+    /*color: gray;*/
+
+}
+
 #search{
-    width: 70%;
+    width: 74%;
     display: inline-block;
     /*background-color: blue;*/
     /*position: relative;*/
     height: 40px;
-    margin: 10px 0;
+    margin: 10px 0 10px 10px;
     border: lightgrey solid 1px;
     box-shadow: 1.5px 1.5px 1px lightgrey;
+    text-align: left;
+    float: left;
 }
 
 #search_field{
@@ -223,14 +234,22 @@ body{
     margin: 0;
 }
 
+#filter_icon_wrapper{
+    display: inline;
+    float: left;
+    margin: 0;
+}
+
 #search_wrapper {
     display: inline;
     position: relative;
 }
 
 #results{
-    margin: 2%;
-    width: 96%
+    /*margin: 2%;*/
+    width: 100%;
+    height: 84.5%;
+    overflow-y: scroll;
 }
 
 #results li{
@@ -252,7 +271,7 @@ body{
 
     /* copied from results li*/
     list-style: none;
-    margin: 8px 0;
+    margin: 8px 2%;
     padding: 0 0 6px 0;
     box-shadow: 1px 1px 2px lightgrey;
 }
@@ -538,6 +557,28 @@ body{
 }
 
 .store_price {
+
+}
+
+
+/*
+    FILTER POPUP
+*/
+
+#filter_popup{
+    text-align: left;
+    position: absolute;
+    width: 80%;
+    height: 100%;
+    background-color: white;
+}
+
+#filter_popup h1{
+    font-size: 15pt;
+}
+
+#filter_option input{
+    float:right;
 
 }
 

@@ -1,29 +1,29 @@
-var results = [
-    {
-        name : "Tuscan Dairy whole milk",
-        image: "https://images-na.ssl-images-amazon.com/images/I/81uQm2SqxhL._SY606_.jpg",
-        brand : "Tuscan Dairy",
-        size : "1",
-        unit : "gal",
-        price :[2.99,3.50,3.99,3.50,3.99]
-    },
-    {
-        name : "Great Value whole milk",
-        image: "https://images-na.ssl-images-amazon.com/images/I/81uQm2SqxhL._SY606_.jpg",
-        brand : "Tuscan Dairy",
-        size : "1",
-        unit : "gal",
-        price :[2.99, null, 3.50, null, null]
-    },
-    {
-        name : "Market 32 whole milk",
-        image: "https://images-na.ssl-images-amazon.com/images/I/81uQm2SqxhL._SY606_.jpg",
-        brand : "Tuscan Dairy",
-        size : "1",
-        unit : "gal",
-        price :[null, null, null, null, 3.99]
-    }
-];
+// var results = [
+//     {
+//         name : "Tuscan Dairy whole milk",
+//         image: "https://images-na.ssl-images-amazon.com/images/I/81uQm2SqxhL._SY606_.jpg",
+//         brand : "Tuscan Dairy",
+//         size : "1",
+//         unit : "gal",
+//         price :[2.99,3.50,3.99,3.50,3.99]
+//     },
+//     {
+//         name : "Great Value whole milk",
+//         image: "https://images-na.ssl-images-amazon.com/images/I/81uQm2SqxhL._SY606_.jpg",
+//         brand : "Tuscan Dairy",
+//         size : "1",
+//         unit : "gal",
+//         price :[2.99, null, 3.49, null, null]
+//     },
+//     {
+//         name : "Market 32 whole milk",
+//         image: "https://images-na.ssl-images-amazon.com/images/I/81uQm2SqxhL._SY606_.jpg",
+//         brand : "Tuscan Dairy",
+//         size : "1",
+//         unit : "gal",
+//         price :[null, null, null, null, 3.99]
+//     }
+// ];
 
 var storeLogos = ["images/logos/d&d2.png",
                 "images/logos/jewel.png",
@@ -38,19 +38,28 @@ function buildResultsList() {
 
     if(RLElement != null){
         for(var i = 0; i < results.length; i++) {
-            console.log("adding new item " + results[i].name);
+            var prices = [results[i]["D & D's Price"],
+                          results[i]["Jewel Osco Price"],
+                          results[i]["Target Price"],
+                          results[i]["Trader Joe's Price"],
+                          results[i]["Whole Foods Price"]
+            ];
+
+            console.log(results[i].Name +   prices);
+
+            console.log("adding new item " + results[i].Name);
             var result = document.createElement("div");
             result.classList.add("result");
 
-            var lowest = null;
-            var highest = null;
+            var lowest = "";
+            var highest = "";
 
             for(var s = 0; s < 5; s++){
-                if(results[i].price[s] == null) continue;
-                if(lowest == null || results[i].price[s] < lowest)
-                    lowest =  results[i].price[s];
-                if(highest == null || results[i].price[s] > lowest)
-                    highest =  results[i].price[s];
+                if(prices[s] == "") continue;
+                if(lowest == "" || prices[s] < lowest)
+                    lowest =  prices[s];
+                if(highest == "" || prices[s] > lowest)
+                    highest =  prices[s];
             }
 
             if (lowest == highest) {
@@ -64,11 +73,11 @@ function buildResultsList() {
             result.innerHTML = `
 
             <div class="result_img_wrapper">
-                <img src=${results[i].image} class="result_img">
+                <img src=${results[i].Image} class="result_img">
             </div>
 
-            <h1> ${results[i].name} </h1>
-            <h2> ${results[i].size} ${results[i].unit} </h2>
+            <h1> ${results[i].Name} </h1>
+            <h2> ${results[i].Size} ${results[i].Unit} </h2>
 
             <span class="result_price"> ${priceString} </span>
 
@@ -94,7 +103,7 @@ function buildResultsList() {
             rLowerElement.appendChild(rslElement);
 
             for(s = 0; s < 5; s++){
-                if(results[i].price[s] !== null) {
+                if(prices[s] !== "") {
                     var logo = document.createElement("img");
                     logo.setAttribute("src", storeLogos[s]);
                     logo.classList.add("result_store_logo")
