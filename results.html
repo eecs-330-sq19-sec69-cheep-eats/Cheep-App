@@ -1,95 +1,123 @@
 <html>
-    <head>
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="cheep.css"/>
-    </head>
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="cheep.css"/>
+</head>
 
-    <body>
-        <div id="screen">
+<body>
+<div id="screen">
 
-            <div id="search_header">
-                <div id="bird_wrapper">
-                    <img id="bird" src="images/bird.png">
+<div id="search_header">
+    <!--<div id="bird_wrapper">-->
+        <!--<img id="bird" src="images/bird.png">-->
+    <!--</div>-->
+
+    <!--<a href="search_entry.html">-->
+        <div id="search">
+            <span class="material_icons" id="search_icon">search</span>
+            <input type="text" id="search_field" onkeydown="if (event.keyCode === 13){searchProductData();}">
+
+            <div id="search_window">
+                <div id="SE_close">
+                    <a href="results.html"><span class="material_icons" id="SE_close_icon"> close </span></a>
                 </div>
 
-                <!--<a href="search_entry.html">-->
-                    <div id="search">
-                        <span class="material_icons" id="search_icon">search</span>
-                        <input type="text" id="search_field">
+                <div id="SE_search_container">
+                    <span class="material_icons" id="SE_search_icon"> search </span>
+                    <input type="text" id="SE_search_field" placeholder="Search...">
+                </div>
 
-                        <div id="search_window">
-                            <div id="SE_close">
-                                <a href="results.html"><span class="material_icons" id="SE_close_icon"> close </span></a>
-                            </div>
-
-                            <div id="SE_search_container">
-                                <span class="material_icons" id="SE_search_icon"> search </span>
-                                <input type="text" id="SE_search_field" placeholder="Search..." onkeydown="if (event.keyCode === 13){searchProductData();}">
-                            </div>
-
-                            <div id="SE_search_history">
-                                <div id="SE_search_history_title"> <span class="material_icons"> history </span> RECENT SEARCHES </div>
-                                <ul>
-                                    <li> <a href="results.html">Milk</a></li>
-                                    <li> Eggs </li>
-                                    <li> Flour </li>
-                                    <li> Oil </li>
-                                    <li> Syrup </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                <!--</a>-->
+                <div id="SE_search_history">
+                    <div id="SE_search_history_title"> <span class="material_icons"> history </span> RECENT SEARCHES </div>
+                    <ul>
+                        <li> <a href="results.html">Milk</a></li>
+                        <li> Eggs </li>
+                        <li> Flour </li>
+                        <li> Oil </li>
+                        <li> Syrup </li>
+                    </ul>
+                </div>
             </div>
-
-            <div id="results">
-                <ul>
-                    <a href="item_details.html"><li class="result">
-                        <div class="result_img_wrapper">
-                            <img src="https://images-na.ssl-images-amazon.com/images/I/81uQm2SqxhL._SY606_.jpg" class="result_img">
-                        </div>
-
-                        <h1> Tuscan Dairy whole milk</h1>
-                        <h2> 1 gal</h2>
-
-                        <div class="result_lower">
-                            <span class="result_price"> 2.99 at Target</span>
-                            <button class="result_add" content="Add"> Add </button>
-                        </div>
-                    </li></a>
-
-                    <li class="result">
-                        <div class="result_img_wrapper">
-                            <img src="https://images-na.ssl-images-amazon.com/images/I/81uQm2SqxhL._SY606_.jpg" class="result_img">
-                        </div>
-
-                        <h1> Tuscan Dairy whole milk</h1>
-                        <h2> 1 gal</h2>
-
-                        <div class="result_lower">
-                            <span class="result_price"> 2.99 at Target</span>
-                            <button class="result_add" content="Add"> Add </button>
-                        </div>
-                    </li>
-
-                    <li class="result">
-                        <div class="result_img_wrapper">
-                            <img src="https://images-na.ssl-images-amazon.com/images/I/81uQm2SqxhL._SY606_.jpg" class="result_img">
-                        </div>
-
-                        <h1> Tuscan Dairy whole milk</h1>
-                        <h2> 1 gal</h2>
-
-                        <div class="result_lower">
-                            <span class="result_price"> 2.99 at Target</span>
-                            <button class="result_add" content="Add"> Add </button>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-
 
         </div>
+    <div id="filter_icon_wrapper">
+        <span id="filter_icon" class="material_icons">tune</span>
+    </div>
+    <!--</a>-->
+</div>
+
+<div id="results">
+    <div id="result_list">
+
+        <!--FORMAT FOR RESULT-->
+
+        <!--<div class="result">-->
+            <!--<div class="result_img_wrapper">-->
+                <!--<img src="https://images-na.ssl-images-amazon.com/images/I/81uQm2SqxhL._SY606_.jpg" class="result_img">-->
+            <!--</div>-->
+            <!--<h1> Tuscan Dairy whole milk</h1>-->
+            <!--<h2> 1 gal</h2>-->
+            <!--<span class="result_price"> $2.99 - $4.99</span>-->
+
+            <!--<div class="result_lower">-->
+                <!--<div class="result_store_list">-->
+                    <!--<img src="images/logos/d&d2.png" class="result_store_logo">-->
+                    <!--<img src="images/logos/jewel.png" class="result_store_logo">-->
+                    <!--<img src="images/logos/target.gif" class="result_store_logo">-->
+                    <!--<img src="images/logos/traderjoes.jpg" class="result_store_logo">-->
+                    <!--<img src="images/logos/wholefoods.png" class="result_store_logo">-->
+                <!--</div>-->
+                <!--<button class="result_add" content="Add"> Add </button>-->
+            <!--</div>-->
+
+    </div>
+</div>
+
+<div id="filter_popup">
+    <div filter_header>
+        <button class="filter_close"> <span class="material_icons"> arrow_back_ios </span> </button>
+        <input type="button" class="filter_apply_button" content="Clear Filters">
+        <input type="button" class="filter_close_button" content="Apply Filters">
+    </div>
+
+    <!--<fieldset>-->
+        <h1> Stores </h1>
+        <div id="DDs_button" class="filter_option">
+            D&D's
+            <input type="checkbox" id="DDs_box">
+        </div>
+        <div id="Jewel_button" class="filter_option">
+            Jewel Osco
+            <input type="checkbox" id="Jewel_box">
+        </div>
+        <div id="Target_buton" class="filter_option">
+            Target
+            <input type="checkbox" id="Target_box">
+        </div>
+        <div id="TJ_button" class="filter_option">
+            Trader Joe's
+            <input type="checkbox" id="TJ_box">
+        </div>
+        <div id="WF_button" class="filter_option">
+            Whole Foods
+            <input type="checkbox" id="WF_box">
+        </div>
+
+        <h1> Price </h1>
+        <input type="text" id="filter_price_low" class="filter_price_field" >
+        <input type="text" id="filter_price_high" class="filter_price_field" >
+
+
+    <!--</fieldset>-->
+
+
+</div>
+
+
+
+</div>
+
+    <script src="results.js"></script>
 
         <!-- The core Firebase JS SDK is always required and must be listed first -->
         <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
@@ -111,39 +139,6 @@
             };
             // Initialize Firebase
             firebase.initializeApp(firebaseConfig);
-        </script>
-
-        <script>
-            function searchProductData(){
-                var searchText = document.getElementById('SE_search_field').value;
-                console.log(searchText);
-
-                console.log('Search Function Called');
-
-                var productResults = [];
-
-                firebase.database().ref('/products').orderByChild("Name").on('child_added', function(snapshot) {
-
-                    if(((snapshot.val().Name).toLowerCase()).includes(searchText.toLowerCase())){
-                        productResults.push(snapshot.val());
-                    }
-
-                    //NOTE - MUST CHANGE IF CHANGE ITEMS IN DATABASE B/C THIS JANKY
-                    if(snapshot.key == 12){
-
-                        console.log(productResults.length);
-                        //console.log(productResults);
-
-                        sessionStorage.setItem("searchResults", JSON.stringify(productResults));
-                        //console.log(JSON.parse(sessionStorage.getItem("searchResults")));
-                        window.location.href = 'results.html';
-
-                    }
-
-                });
-
-            }
-            console.log(JSON.parse(sessionStorage.getItem('searchResults')));
         </script>
 
     </body>
