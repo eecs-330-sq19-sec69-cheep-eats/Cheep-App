@@ -192,8 +192,6 @@
         <script>
             function applyFilters(){
 
-                document.getElementById('filter_icon_wrapper').style.color = "orange";
-
                 //order: D&D's, Jewel, Target, Trader Joe's, Whole Foods
 
                 var stores = ["DDs","Jewel","Target","TJ","WF"];
@@ -313,6 +311,10 @@
 
                 console.log(filterValues);
 
+                if(filterValues.reduce((a,b) => a+b,0) > 0){
+                    document.getElementById('filter_icon').style.color = "orange";
+                }
+
                 for(let i = 0; i<filterValues.length; i++){
 
                     document.getElementById(stores[i] + "_box").checked = !!filterValues[i];
@@ -326,9 +328,11 @@
 
                     if(filterRange[0] != ""){
                         document.getElementById('filter_price_low').value = filterRange[0];
+                        document.getElementById('filter_icon').style.color = "orange";
                     }
                     if(filterRange[1] != ""){
                         document.getElementById('filter_price_high').value = filterRange[1];
+                        document.getElementById('filter_icon').style.color = "orange";
                     }
                 }
 
@@ -341,7 +345,7 @@
         <script>
             function clearFilters(){
 
-                document.getElementById('filter_icon_wrapper').style.color = "black";
+                document.getElementById('search_field').style.color = "black";
 
                 sessionStorage.setItem('filterValues',JSON.stringify([0,0,0,0,0]));
                 sessionStorage.setItem('filterRange',JSON.stringify(["",""]));
