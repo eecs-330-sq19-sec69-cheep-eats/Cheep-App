@@ -13,32 +13,9 @@
         <!--</div>-->
 
         <!--<a href="search_entry.html">-->
-            <div id="search">
+            <div id="search" onclick="toggleSearchScreenVisibility(1)">
                 <span class="material_icons" id="search_icon">search</span>
                 <input type="text" id="search_field" onkeydown="if (event.keyCode === 13){searchProductData();}">
-
-                <div id="search_window">
-                    <div id="SE_close">
-                        <a href="results.html"><span class="material_icons" id="SE_close_icon"> close </span></a>
-                    </div>
-
-                    <div id="SE_search_container">
-                        <span class="material_icons" id="SE_search_icon"> search </span>
-                        <input type="text" id="SE_search_field" placeholder="Search...">
-                    </div>
-
-                    <div id="SE_search_history">
-                        <div id="SE_search_history_title"> <span class="material_icons"> history </span> RECENT SEARCHES </div>
-                        <ul>
-                            <li> <a href="results.html">Milk</a></li>
-                            <li> Eggs </li>
-                            <li> Flour </li>
-                            <li> Oil </li>
-                            <li> Syrup </li>
-                        </ul>
-                    </div>
-                </div>
-
             </div>
 
         <div id="filter_icon_wrapper" onclick="showFilter()">
@@ -89,8 +66,32 @@
     </div>
 </div>
 
+<div id="search_window">
+    <div id="SE_close">
+        <button id="close_search_window_button" onclick="">
+            <span class="material_icons" id="SE_close_icon" onclick="toggleSearchScreenVisibility(0)"> close </span>
+        </button>
+    </div>
+
+    <div id="SE_search_container">
+        <span class="material_icons" id="SE_search_icon"> search </span>
+        <input type="text" id="SE_search_field" placeholder="Search..." onkeydown="if (event.keyCode === 13){searchProductData();}">
+    </div>
+
+    <div id="SE_search_history">
+        <div id="SE_search_history_title"> <span class="material_icons"> history </span> RECENT SEARCHES </div>
+        <ul>
+            <li> <a href="results.html">Milk</a></li>
+            <li> Eggs </li>
+            <li> Flour </li>
+            <li> Oil </li>
+            <li> Syrup </li>
+        </ul>
+    </div>
+</div>
+
 <div id="filter_popup">
-    <div id="dark_box"></div>
+    <div id="dark_box" onclick="hideFilter()"></div>
     <div id="filter_content">
         <div id="filter_header">
             <button id="filter_close" onclick="hideFilter()"> <span class="material_icons"> arrow_back_ios </span> </button>

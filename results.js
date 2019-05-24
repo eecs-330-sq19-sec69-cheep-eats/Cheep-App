@@ -127,6 +127,18 @@ function buildResultsList() {
     }
 }
 
+function toggleSearchScreenVisibility(i){
+    var sw = document.getElementById('search_window');
+    if (i == 1) {
+        sw.style.display = "block";
+        document.getElementById("SE_search_field").focus();
+        document.getElementById("SE_search_field").select();
+
+    } else {
+        sw.style.display = "none";
+    }
+}
+
 
 buildResultsList();
 
