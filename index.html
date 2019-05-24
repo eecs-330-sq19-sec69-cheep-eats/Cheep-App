@@ -57,6 +57,8 @@
             function login(){
                 console.log('Login Function Called');
 
+                localStorage.setItem('recentSearches',JSON.stringify([]));
+
                 firebase.database().ref('/users/' + document.getElementById('login_username').value).once("value").then(function(snapshot) {
                     if (!snapshot.exists()){
                         alert('That username does not exist');

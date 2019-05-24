@@ -27,7 +27,9 @@
                 <input type="text" class="user_info small_piece" id="profile_zip" placeholder="ZIP"></div>
             </div>
 
-            <button onclick="saveUserData()" class="account_button" style="margin-top: 30px;">SAVE ACCOUNT</button>
+            <button onclick="saveUserData()" class="account_button" style="margin-top: 10px;">SAVE ACCOUNT</button>
+
+            <button onclick="logout()" class="account_button" style="margin-top: 25px; border: 2px lightgray; background-image: linear-gradient(white,lightgray); color: black;">LOG OUT</button>
 
             <div id="menu">
                 <a href="search_landing.html" class="menu_tab">
@@ -103,6 +105,11 @@
                 });
 
                 alert('Changes Saved!');
+            }
+
+            function logout(){
+                sessionStorage.setItem('username','');
+                window.location.href = 'index.html';
             }
         </script>
 
