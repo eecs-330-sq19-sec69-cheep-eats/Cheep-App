@@ -122,6 +122,11 @@ function buildResultsList() {
     }
 }
 
+function toggleSearchScreenVisibility(){
+    var sw = document.getElementById('search_window');
+    sw.style.display = (sw.style.display == "none") ? "block" : "none";
+}
+
 
 buildResultsList();
 
