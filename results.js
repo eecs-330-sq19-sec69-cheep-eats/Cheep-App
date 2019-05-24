@@ -36,18 +36,23 @@ var storeLogos = ["images/logos/d&d2.png",
 function buildResultsList() {
     var RLElement = document.getElementById("result_list"); // results_list html element
 
-    if(RLElement != null){
-        for(var i = 0; i < results.length; i++) {
-            var prices = [results[i]["D & D's Price"],
-                          results[i]["Jewel Osco Price"],
-                          results[i]["Target Price"],
-                          results[i]["Trader Joe's Price"],
-                          results[i]["Whole Foods Price"]
+    var searchResults = JSON.parse(sessionStorage.getItem('searchResults'));
+
+    if(RLElement != null && searchResults != null){
+
+        console.log(searchResults);
+
+        for(var i = 0; i < searchResults.length; i++) {
+            var prices = [searchResults[i]["D & D's Price"],
+                searchResults[i]["Jewel Osco Price"],
+                searchResults[i]["Target Price"],
+                searchResults[i]["Trader Joe's Price"],
+                searchResults[i]["Whole Foods Price"]
             ];
 
-            console.log(results[i].Name +   prices);
+            console.log(searchResults[i].Name +   prices);
 
-            console.log("adding new item " + results[i].Name);
+            console.log("adding new item " + searchResults[i].Name);
             var result = document.createElement("div");
             result.classList.add("result");
 
@@ -58,7 +63,7 @@ function buildResultsList() {
                 if(prices[s] == "") continue;
                 if(lowest == "" || prices[s] < lowest)
                     lowest =  prices[s];
-                if(highest == "" || prices[s] > lowest)
+                if(highest == "" || prices[s] > highest)
                     highest =  prices[s];
             }
 
@@ -73,11 +78,11 @@ function buildResultsList() {
             result.innerHTML = `
 
             <div class="result_img_wrapper">
-                <img src=${results[i].Image} class="result_img">
+                <img src=${searchResults[i].Image} class="result_img">
             </div>
 
-            <h1> ${results[i].Name} </h1>
-            <h2> ${results[i].Size} ${results[i].Unit} </h2>
+            <h1> ${searchResults[i].Name} </h1>
+            <h2> ${searchResults[i].Size} ${searchResults[i].Unit} </h2>
 
             <span class="result_price"> ${priceString} </span>
 
@@ -148,6 +153,7 @@ function searchProductData(){
             console.log(productResults.length);
             //console.log(productResults);
 
+            sessionStorage.setItem("searchResultsFull", JSON.stringify(productResults));
             sessionStorage.setItem("searchResults", JSON.stringify(productResults));
             //console.log(JSON.parse(sessionStorage.getItem("searchResults")));
             window.location.href = 'results.html';
@@ -157,10 +163,3 @@ function searchProductData(){
     });
 
 }
-
-console.log(JSON.parse(sessionStorage.getItem('searchResults')));
-
-
-results = JSON.parse(sessionStorage.getItem('searchResults'));
-buildResultsList();
-

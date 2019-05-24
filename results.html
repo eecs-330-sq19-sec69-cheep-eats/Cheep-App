@@ -189,6 +189,8 @@
         <script>
             function applyFilters(){
 
+                document.getElementById('filter_icon_wrapper').style.color = "orange";
+
                 //order: D&D's, Jewel, Target, Trader Joe's, Whole Foods
 
                 var stores = ["DDs","Jewel","Target","TJ","WF"];
@@ -209,7 +211,7 @@
                 console.log(filters);
 
                 var storeKeys = ["D & D's","Jewel Osco","Target","Trader Joe's","Whole Foods"];
-                var searchResults = JSON.parse(sessionStorage.getItem('searchResults'));
+                var searchResults = JSON.parse(sessionStorage.getItem("searchResultsFull"));
                 var newSearchResults = [];
                 var changed = false;
 
@@ -233,6 +235,7 @@
                 }//end if filter by stores
 
                 if(changed){
+                    sessionStorage.setItem('searchResults',JSON.stringify(newSearchResults));
                     searchResults = newSearchResults;
                     newSearchResults = [];
                 }
@@ -265,17 +268,17 @@
                         console.log([itemPriceMin,itemPriceMax]);
 
                         if(rangeMin != "" && rangeMax !=""){
-                            if(itemPriceMin > parseFloat(rangeMin) || itemPriceMax < parseFloat(rangeMax)) {
+                            if(itemPriceMax > parseFloat(rangeMin) && itemPriceMin < parseFloat(rangeMax)) {
                                 newSearchResults.push(searchResults[i]);
                             }
                         }
                         else if(rangeMin != ""){
-                            if(itemPriceMin > parseFloat(rangeMin)){
+                            if(itemPriceMax > parseFloat(rangeMin)){
                                 newSearchResults.push(searchResults[i]);
                             }
                         }
                         else if(rangeMax != ""){
-                            if(itemPriceMax < parseFloat(rangeMax)){
+                            if(itemPriceMin < parseFloat(rangeMax)){
                                 newSearchResults.push(searchResults[i]);
                             }
                         }
@@ -287,8 +290,6 @@
                 if(changed){
                     sessionStorage.setItem('searchResults',JSON.stringify(newSearchResults));
                 }
-
-                console.log(newSearchResults);
 
                 window.location.href = 'results.html';
 
@@ -306,6 +307,8 @@
                 else {
                     var filterValues = JSON.parse(sessionStorage.getItem('filterValues'));
                 }
+
+                console.log(filterValues);
 
                 for(let i = 0; i<filterValues.length; i++){
 
@@ -328,10 +331,13 @@
 
             }
             initFilterValues();
+            document.getElementById('search_field').value = sessionStorage.getItem('searchText');
         </script>
 
         <script>
             function clearFilters(){
+
+                document.getElementById('filter_icon_wrapper').style.color = "black";
 
                 sessionStorage.setItem('filterValues',JSON.stringify([0,0,0,0,0]));
                 sessionStorage.setItem('filterRange',JSON.stringify(["",""]));
