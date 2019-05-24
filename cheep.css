@@ -83,6 +83,12 @@ body{
     font-size: 28pt;
 }
 
+.no_button{
+    background: none;
+    border: none;
+    outline: none;
+}
+
 /* width */
 ::-webkit-scrollbar {
     width: 8px;
@@ -389,26 +395,22 @@ body{
     color: deepskyblue;
 }
 
-#search_window{
-    background-color: white;
-    /*display: none;*/
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-}
-
-#search_field:focus + #search_window{
-    /*display: block !important;*/
-}
-
 
 /*
     SEARCH ENTRY PAGE
     search_entry.html
 */
 
+
+#search_window{
+    background-color: white;
+    display: none;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+}
 
 #SE_close{
     height: 60px;

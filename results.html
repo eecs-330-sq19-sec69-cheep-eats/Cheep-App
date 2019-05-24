@@ -13,7 +13,7 @@
         <!--</div>-->
 
         <!--<a href="search_entry.html">-->
-            <div id="search">
+            <div id="search" onclick="toggleSearchScreenVisibility(1)">
                 <span class="material_icons" id="search_icon">search</span>
                 <input type="text" id="search_field" onkeydown="if (event.keyCode === 13){searchProductData();}">
             </div>
@@ -69,13 +69,13 @@
 <div id="search_window">
     <div id="SE_close">
         <button id="close_search_window_button" onclick="">
-            <span class="material_icons" id="SE_close_icon" onclick="toggleSearchScreenVisibility()"> close </span>
+            <span class="material_icons" id="SE_close_icon" onclick="toggleSearchScreenVisibility(0)"> close </span>
         </button>
     </div>
 
     <div id="SE_search_container">
         <span class="material_icons" id="SE_search_icon"> search </span>
-        <input type="text" id="SE_search_field" placeholder="Search...">
+        <input type="text" id="SE_search_field" placeholder="Search..." onkeydown="if (event.keyCode === 13){searchProductData();}">
     </div>
 
     <div id="SE_search_history">
@@ -91,7 +91,7 @@
 </div>
 
 <div id="filter_popup">
-    <div id="dark_box"></div>
+    <div id="dark_box" onclick="hideFilter()"></div>
     <div id="filter_content">
         <div id="filter_header">
             <button id="filter_close" onclick="hideFilter()"> <span class="material_icons"> arrow_back_ios </span> </button>

@@ -122,9 +122,16 @@ function buildResultsList() {
     }
 }
 
-function toggleSearchScreenVisibility(){
+function toggleSearchScreenVisibility(i){
     var sw = document.getElementById('search_window');
-    sw.style.display = (sw.style.display == "none") ? "block" : "none";
+    if (i == 1) {
+        sw.style.display = "block";
+        document.getElementById("SE_search_field").focus();
+        document.getElementById("SE_search_field").select();
+
+    } else {
+        sw.style.display = "none";
+    }
 }
 
 
