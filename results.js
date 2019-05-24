@@ -144,8 +144,11 @@ buildResultsList();
 
 
 function searchProductData(){
-    var searchText = document.getElementById('search_field').value;
+    var searchText = document.getElementById('SE_search_field').value;
     sessionStorage.setItem('searchText',searchText);
+
+    var resultsSearchField = document.getElementById('SE_search_field');
+    resultsSearchField.value=searchText;
 
     console.log(searchText);
 
