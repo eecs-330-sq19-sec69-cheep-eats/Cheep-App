@@ -61,6 +61,8 @@
         <script>
             function writeUserData(){
                 console.log('Write Function Called');
+                
+                localStorage.setItem('recentSearches',JSON.stringify([]));
 
                 if(document.getElementById('create_username').value == ""){
                     alert('Username field is required.');
