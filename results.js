@@ -144,15 +144,24 @@ buildResultsList();
 
 
 function searchProductData(){
+    console.log('Search Function Called');
+
     var searchText = document.getElementById('SE_search_field').value;
     sessionStorage.setItem('searchText',searchText);
 
-    var resultsSearchField = document.getElementById('SE_search_field');
-    resultsSearchField.value=searchText;
-
     console.log(searchText);
 
-    console.log('Search Function Called');
+    var recentSearches = JSON.parse(localStorage.getItem('recentSearches'));
+    if(recentSearches.includes(searchText)) {
+        recentSearches.splice(recentSearches.indexOf(searchText), 1);
+    }
+    recentSearches.unshift(searchText);
+    if(recentSearches.length > 5){
+        recentSearches.pop();
+    }
+    localStorage.setItem('recentSearches',JSON.stringify(recentSearches));
+
+    console.log(recentSearches);
 
     var productResults = [];
 
