@@ -19,12 +19,16 @@
 
             <div id="SE_search_history">
                 <div id="SE_search_history_title"> <span class="material_icons"> history </span> RECENT SEARCHES </div>
-                <ul>
-                    <li> <a href="results.html">Milk</a></li>
+                <ul id="recent_searches_list">
+
+                    <!-- FILL FORMAT -->
+
+                    <!--<li> <a href="results.html">Milk</a></li>
                     <li> Eggs </li>
                     <li> Flour </li>
                     <li> Oil </li>
-                    <li> Syrup </li>
+                    <li> Syrup </li>-->
+
                 </ul>
             </div>
 
@@ -71,36 +75,38 @@
             firebase.initializeApp(firebaseConfig);
         </script>
 
+        <script src="results.js"></script>
+
         <script>
-            function searchProductData(){
-                var searchText = document.getElementById('SE_search_field').value;
-                console.log(searchText);
+            function buildRecentList(){
+                console.log('Recent List Function Called');
 
-                console.log('Search Function Called');
+                var recentElement = document.getElementById('recent_searches_list');
 
-                var productResults = [];
+                var recentSearches = JSON.parse(localStorage.getItem('recentSearches'));
 
-                firebase.database().ref('/products').orderByKey().on('child_added', function(snapshot) {
+                if(recentElement != null && recentSearches.length > 0){
 
-                    if(((snapshot.val().Name).toLowerCase()).includes(searchText.toLowerCase())){
-                        productResults.push(snapshot.val());
+                    for(let i = 0; i<recentSearches.length; i++){
+
+                        let recentSearch = document.createElement('li');
+                        recentSearch.onclick = function searchRecent(){
+                            document.getElementById('SE_search_field').value = recentSearches[i];
+                            sessionStorage.setItem('searchText',recentSearches[i]);
+
+                            searchProductData();
+                        };
+
+                        recentSearch.innerHTML = recentSearches[i];
+
+                        recentElement.appendChild(recentSearch);
+
                     }
 
-                    //NOTE - MUST CHANGE IF CHANGE ITEMS IN DATABASE B/C THIS JANKY
-                    if(snapshot.key == 19){
-
-                        console.log(productResults.length);
-                        //console.log(productResults);
-
-                        sessionStorage.setItem("searchResults", JSON.stringify(productResults));
-                        //console.log(JSON.parse(sessionStorage.getItem("searchResults")));
-                        window.location.href = 'results.html';
-
-                    }
-
-                });
-
+                }
             }
+            buildRecentList();
+            document.getElementById('SE_search_field').value = "";
         </script>
 
     </body>
