@@ -377,25 +377,60 @@ body{
 
 /*.results*/
 
-.result_add{
+
+.result_add_area{
+    float: right;
+    display: inline-block;
+    width: 80px;
+    margin-right: 10px
+}
+
+.result_add_button{
     border-radius: 4px;
     height: 30px;
     min-width: 80px;
     margin: 0 10px 0 0;
     float: right;
+    border: solid deepskyblue 2px;
 
-    border: 2px linear-gradient(#00bfff,#0099cc);
-    background-image: linear-gradient(#00bfff,#0099cc);
+    /*border: 2px linear-gradient(#00bfff,#0099cc);*/
+    /*background-image: linear-gradient(#00bfff,#0099cc);*/
 
+    background-color: deepskyblue;
     font-weight: bold;
     color:white;
     /*padding: ;*/
 }
 
-.result_add:hover{
+.result_add_button:hover{
     background-color: white;
     color: deepskyblue;
 }
+
+.result_add_area .material_icons{
+    color: deepskyblue;
+    font-size: 14pt;
+    position: relative;
+    bottom: -4px;
+    padding: 0 4px;
+    float: right;
+}
+
+.result_edit_field{
+    border: none;
+    border-bottom: black 1.5px solid;
+    width: 25px;
+    outline: none;
+    font-size: 14pt;
+    text-align: center;
+    float: right;
+}
+
+
+.result_add_area input[type=text]:focus, .result_add_area input[type=text]:hover{
+    border-bottom: deepskyblue 1.5px solid; !important
+}
+
 
 
 /*

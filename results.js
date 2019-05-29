@@ -118,7 +118,7 @@ function buildResultsList() {
             }
 
             var rbElement = document.createElement("button");
-            rbElement.classList.add("result_add");
+            rbElement.classList.add("result_add_button");
             rbElement.innerHTML = "Add";
             rLowerElement.appendChild(rbElement);
 
