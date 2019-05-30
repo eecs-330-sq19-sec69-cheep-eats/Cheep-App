@@ -16,16 +16,16 @@
 
             <div id="information">
                 <div class="header-piece">Email</div>
-                <div class="piece"><input type="text" class="user_info" id="create_email"></div>
+                <div class="piece"><input type="text" class="user_info" id="create_email" required></div>
 
                 <div class="header-piece">Username</div>
                 <div class="piece"><input type="text" class="user_info" id="create_username" required></div>
 
                 <div class="header-piece">Password</div>
-                <div class="piece"><input type="password" class="user_info" id="create_password"></div>
+                <div class="piece"><input type="password" class="user_info" id="create_password" required></div>
 
                 <div class="header-piece">Confirm Password</div>
-                <div class="piece"><input type="password" class="user_info" id="create_confpassword"></div>
+                <div class="piece"><input type="password" class="user_info" id="create_confpassword" required></div>
 
                 <div class="header-piece">Address (optional)</div>
                 <div class="header-piece"><input type="text" class="user_info" id="create_street" placeholder="Street Address"></div>
@@ -34,7 +34,7 @@
                 <input type="text" class="user_info small_piece" id="create_zip" placeholder="ZIP"></div>
             </div>
 
-            <button onclick="writeUserData()" class="account_button" type="submit" style="margin-top: 30px;">CREATE ACCOUNT</button>
+            <button onclick="writeUserData()" class="account_button" type="submit" style="margin-top: 10px;">CREATE ACCOUNT</button>
 
         </div>
 
@@ -65,9 +65,10 @@
                 console.log('Write Function Called');
                 
                 localStorage.setItem('recentSearches',JSON.stringify([]));
+                sessionStorage.setItem('cartItems',JSON.stringify((new Array(20).fill(null))));
 
-                if(document.getElementById('create_username').value == ""){
-                    alert('Username field is required.');
+                if(document.getElementById('create_username').value == "" || document.getElementById('create_email').value == "" || document.getElementById('create_password').value == "" || document.getElementById('create_confpassword').value == ""){
+                    alert('Please fill all required fields.');
                     return;
                 }
 

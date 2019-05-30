@@ -36,13 +36,13 @@ var storeLogos = ["images/logos/d&d2.png",
 function buildResultsList() {
     var RLElement = document.getElementById("result_list"); // results_list html element
 
-    var searchResults = JSON.parse(sessionStorage.getItem('searchResults'));
+    let searchResults = JSON.parse(sessionStorage.getItem('searchResults'));
 
     if(RLElement != null && searchResults != null){
 
         console.log(searchResults);
 
-        for(var i = 0; i < searchResults.length; i++) {
+        for(let i = 0; i < searchResults.length; i++) {
             var prices = [searchResults[i]["D & D's Price"],
                 searchResults[i]["Jewel Osco Price"],
                 searchResults[i]["Target Price"],
@@ -119,11 +119,95 @@ function buildResultsList() {
 
             var rbElement = document.createElement("button");
             rbElement.classList.add("result_add_button");
-            rbElement.innerHTML = "Add";
+            rbElement.id = "add_button_" + searchResults[i]["ID"];
+            rbElement.innerHTML = "Add to Cart";
+            rbElement.onclick = function addToCart(){
+                console.log('Add to Cart Function Called');
+                console.log('ID: ' + searchResults[i]["ID"]);
+                console.log(searchResults[i]);
+
+                let cartItems = JSON.parse(sessionStorage.getItem('cartItems'));
+                searchResults[i]["In Cart"] = 1;
+                cartItems[searchResults[i]["ID"]] = searchResults[i];
+                console.log(cartItems);
+                sessionStorage.setItem('cartItems',JSON.stringify(cartItems));
+
+                document.getElementById("inCart_" + searchResults[i]["ID"]).value = 1;
+
+                document.getElementById("add_button_" + searchResults[i]["ID"]).style.display = "none";
+                document.getElementById("add_area_" + searchResults[i]["ID"]).style.display = "block";
+
+            };
             rLowerElement.appendChild(rbElement);
+
+
+            var addedElement = document.createElement("div");
+            addedElement.classList.add("result_add_area");
+            addedElement.id = "add_area_" + searchResults[i]["ID"];
+
+            var add_circ = document.createElement("span");
+            add_circ.classList.add("material_icons");
+            add_circ.innerHTML = 'add_circle_outline';
+            add_circ.onclick = function addOne(){
+                console.log('Add Function Called');
+                console.log('ID: ' + searchResults[i]["ID"]);
+
+                let cartItems = JSON.parse(sessionStorage.getItem('cartItems'));
+                cartItems[searchResults[i]["ID"]]["In Cart"] = parseInt(document.getElementById("inCart_" + searchResults[i]["ID"]).value) + 1;
+
+                document.getElementById("inCart_" + searchResults[i]["ID"]).value = cartItems[searchResults[i]["ID"]]["In Cart"];
+
+                console.log(cartItems[searchResults[i]["ID"]]);
+                sessionStorage.setItem('cartItems',JSON.stringify(cartItems));
+
+            };
+            addedElement.appendChild(add_circ);
+
+            var edit_field = document.createElement("input");
+            edit_field.type = 'text';
+            edit_field.classList.add('result_edit_field');
+            edit_field.id = "inCart_" + searchResults[i]["ID"];
+            addedElement.appendChild(edit_field);
+
+            var rem_circ = document.createElement("span");
+            rem_circ.classList.add("material_icons");
+            rem_circ.innerHTML = 'remove_circle_outline';
+            rem_circ.onclick = function removeOne(){
+                console.log('Remove Function Called');
+                console.log('ID: ' + searchResults[i]["ID"]);
+
+                let cartItems = JSON.parse(sessionStorage.getItem('cartItems'));
+                cartItems[searchResults[i]["ID"]]["In Cart"] = parseInt(document.getElementById("inCart_" + searchResults[i]["ID"]).value) - 1;
+
+                document.getElementById("inCart_" + searchResults[i]["ID"]).value = cartItems[searchResults[i]["ID"]]["In Cart"];
+
+                if(cartItems[searchResults[i]["ID"]]["In Cart"] == 0){
+                    cartItems[searchResults[i]["ID"]] = null;
+
+                    document.getElementById("add_button_" + searchResults[i]["ID"]).style.display = "block";
+                    document.getElementById("add_area_" + searchResults[i]["ID"]).style.display = "none";
+                }
+
+                console.log(cartItems[searchResults[i]["ID"]]);
+                sessionStorage.setItem('cartItems',JSON.stringify(cartItems));
+
+            };
+            let cartItems = JSON.parse(sessionStorage.getItem('cartItems'));
+            if(cartItems[searchResults[i]["ID"]] != null){
+                console.log('MORE THAN ONE ITEM IN CART for: ' + searchResults[i]["ID"]);
+                edit_field.value = cartItems[searchResults[i]["ID"]]["In Cart"];
+                rbElement.style.display = "none";
+                addedElement.style.display = "block";
+            }
+
+            addedElement.appendChild(rem_circ);
+
+            rLowerElement.appendChild(addedElement);
+
 
             RLElement.appendChild(result);
         }
+        console.log(JSON.parse(sessionStorage.getItem('cartItems')));
     }
 }
 
@@ -172,7 +256,7 @@ function searchProductData(){
         }
 
         //NOTE - MUST CHANGE IF CHANGE ITEMS IN DATABASE B/C THIS JANKY
-        if(snapshot.key == 12){
+        if(snapshot.key == 19){
 
             console.log(productResults.length);
             //console.log(productResults);
