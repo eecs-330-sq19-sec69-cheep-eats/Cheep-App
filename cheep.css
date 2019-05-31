@@ -55,6 +55,7 @@ body{
     font-size: 21px;
     font-weight: bold;
     color: orange;
+    text-align: center;
 }
 
 #menu {
@@ -242,6 +243,8 @@ body{
     display: inline-block;
     float: left;
     outline: none;
+    margin-top: 2px;
+    font-size: 14px;
 }
 
 #search_icon{
@@ -306,7 +309,7 @@ body{
 }
 
 .result_img_wrapper{
-    padding: 8px 8px 0 8px;
+    padding: 3px 8px 0 8px;
     height: 60px;
     width: 60px;
     float: left;
@@ -334,6 +337,11 @@ body{
     text-align: left;
 }
 
+.result_upper{
+    width: 100%;
+    height: 60px;
+}
+
 .result_lower{
     width: 100%;
     /*height: 20px;*/
@@ -346,7 +354,7 @@ body{
     /*padding: 0 0 0 20px;*/
     padding: 5px 0;
     color: #ffb200;
-    font-size: 8pt;
+    font-size: 9pt;
     vertical-align: bottom;
     display: block;
     float: left;
@@ -533,6 +541,11 @@ body{
     item_details.html
 */
 
+.back_arrow {
+    float: left;
+    margin-left: 15px;
+}
+
 .column {
     float: left;
 }
@@ -569,7 +582,7 @@ body{
 }
 
 .item_wrapper {
-    padding-top: 30px;
+    padding-top: 20px;
 }
 
 .item_pic {
@@ -582,17 +595,55 @@ body{
     font-weight: 800;
     font-size: 12pt;
     text-align: left;
+    padding-right: 10px;
+}
+
+.item_size {
+    margin-top: 10px;
+    font-size: 12pt;
+    text-align: left;
 }
 
 .item_price_range {
-    padding-top: 20px;
+    margin-top: 20px;
     font-style: italic;
     font-size: 12pt;
     text-align: left;
 }
 
+.item_add_area {
+    width: 180px;
+    height: 30px;
+    margin: auto;
+    display: none;
+    margin-top: 15px;
+}
+
+.item_add_area .material_icons{
+    color: deepskyblue;
+    font-size: 16pt;
+    position: relative;
+    bottom: -2px;
+    padding: 0 4px;
+    /*float: right;*/
+}
+
+.item_edit_field {
+    border: none;
+    border-bottom: black 1.5px solid;
+    width: 40px;
+    outline: none;
+    font-size: 16pt;
+    text-align: center;
+    /*float: right;*/
+}
+
+.item_add_area input[type=text]:focus, .item_add_area input[type=text]:hover{
+    border-bottom: deepskyblue 1.5px solid; !important
+}
+
 .store_results_wrapper {
-    margin-top: 20px;
+    margin-top: 25px;
     overflow-y: scroll;
     overflow-x: hidden;
     outline: 1px dotted black;
@@ -610,14 +661,9 @@ body{
 
 .store_logo {
     margin-top: 5px;
-    margin-bottom: 3px;
     text-align: left;
-    vertical-align: middle;
     display: inline-block;
-    height: 100%;
-
-    height: 40px;
-    width: 40px;
+    height: 80%;
 }
 
 .store_name {

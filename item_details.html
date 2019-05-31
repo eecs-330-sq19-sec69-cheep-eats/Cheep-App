@@ -11,100 +11,108 @@
         <div id="screen">
 
             <div id="header">
-                <a href="results.html"><div class="material_icons back_arrow">
-                    arrow_back_ios
-                </div></a>
+                <a href="results.html">
+                    <div class="material_icons back_arrow">
+                        arrow_back_ios
+                    </div>
+                </a>
                 Item Details
             </div>
 
             <div class="item_wrapper">
                 <div class="row">
                     <div class="column even">
-                        <img class="item_pic" src="images/Tuscan_Dairy_Whole_VitaminD_Milk_1gal.jpg">
+                        <img class="item_pic" id="item_det_pic" style="height: 27.5%; width: 85%; margin: 5% auto;">
                     </div>
                     <div class="column even">
-                        <div class="item_name">Tuscan Dairy Whole Vitamin D Milk, Gallon (128 oz.)</div>
-
-                        <div class="item_price_range">$2.99 - $5.49</div>
+                        <div class="item_name" id="item_det_name"></div>
+                        <div class="item_size" id="item_det_size"></div>
+                        <div class="item_price_range" id="item_det_range">$2.99 - $5.49</div>
                     </div>
                 </div>
 
-                <button class="account_button" style="margin-top: 10px">Add to Cart</button>
+                <button class="account_button" id="add_button" style="margin: 15px auto 0 auto" onclick="addItemToCart()">Add to Cart</button>
+                <div class="item_add_area" id="add_area">
+                    <span class="material_icons" onclick="removeOne()">remove_circle_outline</span>
+                    <input type="text" class="item_edit_field" id="inCart">
+                    <span class="material_icons" onclick="addOne()">add_circle_outline</span>
+                </div>
+
             </div>
 
             <div class="store_results_wrapper">
 
-                <div class="store_result">
+                <div class="store_result" id="JOPrice">
                     <div class="row">
                         <div class="column left">
-                            <img src="images/jewel_osco.png" class="store_logo">
+                            <img src="images/logos/jewel.png" class="store_logo">
                         </div>
                         <div class="column middle">
                             <div class="store_name">Jewel Osco</div>
                             <div class="store_distance">1.2 miles</div>
                         </div>
                         <div class="column right">
-                            <div class="store_price">$2.99</div>
+                            <div class="store_price" id="item_det_JOPrice"></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="store_result">
+                <div class="store_result" id="TPrice">
                     <div class="row">
                         <div class="column left">
-                            <img src="images/target.png" class="store_logo">
+                            <img src="images/logos/target.gif" class="store_logo">
                         </div>
                         <div class="column middle">
                             <div class="store_name">Target</div>
                             <div class="store_distance">0.5 miles</div>
                         </div>
                         <div class="column right">
-                            <div class="store_price">$3.49</div>
+                            <div class="store_price" id="item_det_TPrice"></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="store_result">
+                <div class="store_result" id="TJPrice">
                     <div class="row">
                         <div class="column left">
-                            <img src="images/trader_joes.jpg" class="store_logo">
+                            <img src="images/logos/traderjoes.jpg" class="store_logo">
                         </div>
                         <div class="column middle">
                             <div class="store_name">Trader Joe's</div>
                             <div class="store_distance">1.3 miles</div>
                         </div>
                         <div class="column right">
-                            <div class="store_price">$4.09</div>
+                            <div class="store_price" id="item_det_TJPrice"></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="store_result">
+                <div class="store_result" id="WFPrice">
                     <div class="row">
                         <div class="column left">
-                            <img src="images/whole_foods.svg" class="store_logo">
+                            <img src="images/logos/wholefoods.png" class="store_logo">
                         </div>
                         <div class="column middle">
                             <div class="store_name">Whole Foods</div>
                             <div class="store_distance">0.3 miles</div>
                         </div>
                         <div class="column right">
-                            <div class="store_price">$4.12</div>
+                            <div class="store_price" id="item_det_WFPrice"></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="store_result">
+                <div class="store_result" id="D&DPrice">
                     <div class="row">
                         <div class="column left">
-                            <img src="images/cvs_pharmacy.png" class="store_logo">
+                            <img src="images/logos/d&d2.png" class="store_logo">
                         </div>
                         <div class="column middle">
-                            <div class="store_name">CVS</div>
+                            <div class="store_name">D&D's</div>
                             <div class="store_distance">0.5 miles</div>
                         </div>
                         <div class="column right">
-                            <div class="store_price">$5.49</div>
+                            <div class="store_price" id="item_det_D&DPrice"></div>
                         </div>
                     </div>
                 </div>
@@ -126,6 +134,136 @@
                 </a>
             </div>
 
+        </div>
+
+        <script src="results.js"></script>
+
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+             https://firebase.google.com/docs/web/setup#config-web-app -->
+
+        <script>
+            // Your web app's Firebase configuration
+            var firebaseConfig = {
+                apiKey: "AIzaSyDnOwuo2b9OnJsVH0ErxUgarks1iKFDRM8",
+                authDomain: "cheep-app.firebaseapp.com",
+                databaseURL: "https://cheep-app.firebaseio.com",
+                projectId: "cheep-app",
+                storageBucket: "cheep-app.appspot.com",
+                messagingSenderId: "17385407188",
+                appId: "1:17385407188:web:b41fa17aaeda8b52"
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+        </script>
+
+        <script>
+            function loadItemDetails(){
+
+                let item = JSON.parse(sessionStorage.getItem('itemDetails'));
+                console.log(item);
+
+                document.getElementById('item_det_pic').src = item["Image"];
+                document.getElementById('item_det_name').innerHTML = item["Name"];
+                document.getElementById('item_det_size').innerHTML = item["Size"] + " " + item["Unit"];
+
+                let prices = [item["Jewel Osco Price"],
+                    item["Target Price"],
+                    item["Trader Joe's Price"],
+                    item["Whole Foods Price"],
+                    item["D & D's Price"]
+                ];
+
+                let storeIDs = ["JOPrice","TPrice","TJPrice","WFPrice","D&DPrice"];
+
+                let lowest = "";
+                let highest = "";
+
+                for(let s = 0; s < 5; s++){
+                    if(prices[s] == ""){
+                        document.getElementById(storeIDs[s]).style.display = "none";
+                        continue;
+                    }
+                    document.getElementById("item_det_" + storeIDs[s]).innerHTML = '$' + prices[s];
+                    if(lowest == "" || prices[s] < lowest)
+                        lowest =  prices[s];
+                    if(highest == "" || prices[s] > highest)
+                        highest =  prices[s];
+                }
+
+                if (lowest == highest) {
+                    var priceString = lowest.toString();
+                } else {
+                    console.log(lowest, highest);
+                    var priceString = "$" + lowest.toString() + " - " + "$" + highest.toString();
+                }
+
+                document.getElementById('item_det_range').innerHTML = priceString;
+
+                let cartItems = JSON.parse(sessionStorage.getItem('cartItems'));
+                if(cartItems[item["ID"]] != null){
+                    console.log('MORE THAN ONE ITEM IN CART');
+                    document.getElementById("inCart").value = cartItems[item["ID"]]["In Cart"];
+                    document.getElementById("add_button").style.display = "none";
+                    document.getElementById("add_area").style.display = "block";
+                }
+
+            }
+            loadItemDetails();
+        </script>
+
+        <script>
+            function addItemToCart(){
+                console.log('Add to Cart Function Called');
+
+                let cartItems = JSON.parse(sessionStorage.getItem('cartItems'));
+                let currItem = JSON.parse(sessionStorage.getItem('itemDetails'));
+                currItem["In Cart"] = 1;
+
+                cartItems[currItem["ID"]] = currItem;
+                console.log(cartItems);
+                sessionStorage.setItem('cartItems',JSON.stringify(cartItems));
+
+                document.getElementById("inCart").value = 1;
+
+                document.getElementById("add_button").style.display = "none";
+                document.getElementById("add_area").style.display = "block";
+            }
+            function addOne(){
+                console.log('Add Function Called');
+
+                let cartItems = JSON.parse(sessionStorage.getItem('cartItems'));
+                let currItem = JSON.parse(sessionStorage.getItem('itemDetails'));
+
+                cartItems[currItem["ID"]]["In Cart"] = parseInt(document.getElementById("inCart").value) + 1;
+
+                document.getElementById("inCart").value = cartItems[currItem["ID"]]["In Cart"];
+
+                console.log(cartItems[currItem["ID"]]);
+                sessionStorage.setItem('cartItems',JSON.stringify(cartItems));
+            }
+            function removeOne(){
+                console.log('Remove Function Called');
+
+                let cartItems = JSON.parse(sessionStorage.getItem('cartItems'));
+                let currItem = JSON.parse(sessionStorage.getItem('itemDetails'));
+                cartItems[currItem["ID"]]["In Cart"] = parseInt(document.getElementById("inCart").value) - 1;
+
+                document.getElementById("inCart").value = cartItems[currItem["ID"]]["In Cart"];
+
+                if(cartItems[currItem["ID"]]["In Cart"] == 0){
+                    cartItems[currItem["ID"]] = null;
+
+                    document.getElementById("add_button").style.display = "block";
+                    document.getElementById("add_area").style.display = "none";
+                }
+
+                console.log(cartItems[currItem["ID"]]);
+                sessionStorage.setItem('cartItems',JSON.stringify(cartItems));
+            }
         </script>
 
     </body>

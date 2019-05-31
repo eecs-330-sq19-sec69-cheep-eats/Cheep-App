@@ -74,8 +74,10 @@ function buildResultsList() {
                 var priceString = "$" + lowest.toString() + " - " + "$" + highest.toString();
             }
 
+            var rUpperElement = document.createElement("div");
+            rUpperElement.classList.add('result_upper');
             // noinspection JSAnnotator
-            result.innerHTML = `
+            rUpperElement.innerHTML = `
 
             <div class="result_img_wrapper">
                 <img src=${searchResults[i].Image} class="result_img">
@@ -98,6 +100,11 @@ function buildResultsList() {
             <!--</div>-->
 
             `
+            rUpperElement.onclick = function itemDetails(){
+                sessionStorage.setItem('itemDetails',JSON.stringify(searchResults[i]));
+                window.location.href = 'item_details.html';
+            }
+            result.appendChild(rUpperElement);
 
             var rLowerElement = document.createElement("div");
             rLowerElement.classList.add("result_lower");
@@ -208,6 +215,15 @@ function buildResultsList() {
             RLElement.appendChild(result);
         }
         console.log(JSON.parse(sessionStorage.getItem('cartItems')));
+    }
+
+    if(searchResults.length == 0){
+        var noResults = document.createElement('p');
+        noResults.innerHTML = 'No Results Found';
+        noResults.style.marginTop = '80px';
+        noResults.style.fontSize = '16pt';
+        noResults.style.color = 'gray';
+        RLElement.appendChild(noResults);
     }
 }
 
