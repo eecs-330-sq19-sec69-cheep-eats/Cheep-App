@@ -115,7 +115,9 @@
                                 var priceString = "$" + lowest.toString() + " - " + "$" + highest.toString();
                             }
 
-                            result.innerHTML = `
+                            let rUpperElement = document.createElement("div");
+                            rUpperElement.classList.add('result_upper');
+                            rUpperElement.innerHTML =`
 
                                 <div class="result_img_wrapper">
                                     <img src=${cartItems[i].Image} class="result_img">
@@ -126,6 +128,7 @@
 
                                 <span class="result_price"> ${priceString} </span>
                             `
+                            result.appendChild(rUpperElement);
 
                             let rLowerElement = document.createElement("div");
                             rLowerElement.classList.add("result_lower");
