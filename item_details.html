@@ -42,6 +42,21 @@
 
             <div class="store_results_wrapper">
 
+                <div class="store_result" id="D&DPrice">
+                    <div class="row">
+                        <div class="column left">
+                            <img src="images/logos/d&d2.png" class="store_logo">
+                        </div>
+                        <div class="column middle">
+                            <div class="store_name">D&D's</div>
+                            <div class="store_distance">0.5 miles</div>
+                        </div>
+                        <div class="column right">
+                            <div class="store_price" id="item_det_D&DPrice"></div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="store_result" id="JOPrice">
                     <div class="row">
                         <div class="column left">
@@ -102,21 +117,6 @@
                     </div>
                 </div>
 
-                <div class="store_result" id="D&DPrice">
-                    <div class="row">
-                        <div class="column left">
-                            <img src="images/logos/d&d2.png" class="store_logo">
-                        </div>
-                        <div class="column middle">
-                            <div class="store_name">D&D's</div>
-                            <div class="store_distance">0.5 miles</div>
-                        </div>
-                        <div class="column right">
-                            <div class="store_price" id="item_det_D&DPrice"></div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
 
             <div id="menu">
@@ -167,14 +167,14 @@
                 document.getElementById('item_det_name').innerHTML = item["Name"];
                 document.getElementById('item_det_size').innerHTML = item["Size"] + " " + item["Unit"];
 
-                let prices = [item["Jewel Osco Price"],
+                let prices = [item["D & D's Price"],
+                    item["Jewel Osco Price"],
                     item["Target Price"],
                     item["Trader Joe's Price"],
-                    item["Whole Foods Price"],
-                    item["D & D's Price"]
+                    item["Whole Foods Price"]
                 ];
 
-                let storeIDs = ["JOPrice","TPrice","TJPrice","WFPrice","D&DPrice"];
+                let storeIDs = ["D&DPrice","JOPrice","TPrice","TJPrice","WFPrice"];
 
                 let lowest = "";
                 let highest = "";
@@ -184,7 +184,7 @@
                         document.getElementById(storeIDs[s]).style.display = "none";
                         continue;
                     }
-                    document.getElementById("item_det_" + storeIDs[s]).innerHTML = '$' + prices[s];
+                    document.getElementById("item_det_" + storeIDs[s]).innerHTML = '$' + prices[s].toFixed(2);
                     if(lowest == "" || prices[s] < lowest)
                         lowest =  prices[s];
                     if(highest == "" || prices[s] > highest)
@@ -192,10 +192,10 @@
                 }
 
                 if (lowest == highest) {
-                    var priceString = lowest.toString();
+                    var priceString = lowest.toFixed(2);
                 } else {
                     console.log(lowest, highest);
-                    var priceString = "$" + lowest.toString() + " - " + "$" + highest.toString();
+                    var priceString = "$" + lowest.toFixed(2) + " - " + "$" + highest.toFixed(2);
                 }
 
                 document.getElementById('item_det_range').innerHTML = priceString;

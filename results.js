@@ -68,10 +68,10 @@ function buildResultsList() {
             }
 
             if (lowest == highest) {
-                var priceString = lowest.toString();
+                var priceString = lowest.toFixed(2);
             } else {
                 console.log(lowest, highest);
-                var priceString = "$" + lowest.toString() + " - " + "$" + highest.toString();
+                var priceString = "$" + lowest.toFixed(2) + " - " + "$" + highest.toFixed(2);
             }
 
             var rUpperElement = document.createElement("div");
@@ -230,9 +230,6 @@ function toggleSearchScreenVisibility(i){
         sw.style.display = "none";
     }
 }
-
-
-buildResultsList();
 
 
 function searchProductData(){
