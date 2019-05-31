@@ -55,7 +55,7 @@ body{
     font-size: 21px;
     font-weight: bold;
     color: orange;
-    text-align: center;
+    cursor: default;
 }
 
 #menu {
@@ -170,6 +170,7 @@ body{
 
 .immutable {
     text-align: left;
+    cursor: default;
 }
 
 .account_button {
@@ -183,7 +184,13 @@ body{
 
     font-weight: bold;
     color: white;
+    cursor: pointer;
     /*padding: ;*/
+}
+
+.account_button:hover{
+    background-image: linear-gradient(white,lightgray);
+    color: deepskyblue;
 }
 
 
@@ -306,6 +313,7 @@ body{
     margin: 8px 2%;
     padding: 0 0 6px 0;
     box-shadow: 1px 1px 2px lightgrey;
+    cursor: default;
 }
 
 .result_img_wrapper{
@@ -487,6 +495,7 @@ body{
     top: 7px;
     font-size: 30px;
     color: gray;
+    cursor: default;
 }
 
 #SE_search_field{
@@ -505,6 +514,7 @@ body{
     margin-left: 8%;
     text-align: left;
     color: black;
+    cursor: default;
 }
 
 #SE_search_history{
@@ -526,6 +536,7 @@ body{
     font-style: italic;
     text-align: left;
     font-size: 16pt;
+    cursor: pointer;
 }
 
 #close_search_window_button{
@@ -559,21 +570,22 @@ body{
 
     text-align: left;
     margin-left: 8px;
-    margin-top: 8px;
+    margin-top: 15px;
 }
 
 .right {
     width: 20%;
+    height: 40px;
 
     text-align: left;
     margin-left: 35px;
-    margin-top: 15px;
+    margin-top: 20px;
 }
 
 .even {
-    width: 50%;
+    width: 46%;
+    margin-right: 10px;
 }
-
 
 .row:after {
     content: "";
@@ -595,20 +607,22 @@ body{
     font-weight: 800;
     font-size: 12pt;
     text-align: left;
-    padding-right: 10px;
+    cursor: default;
 }
 
 .item_size {
     margin-top: 10px;
     font-size: 12pt;
     text-align: left;
+    cursor: default;
 }
 
 .item_price_range {
-    margin-top: 20px;
+    margin-top: 15px;
     font-style: italic;
     font-size: 12pt;
     text-align: left;
+    cursor: default;
 }
 
 .item_add_area {
@@ -649,21 +663,22 @@ body{
     outline: 1px dotted black;
     height: 165px;
     width: 300px;
+    cursor: default;
 }
 
 .store_result {
     width: 300px;
-    height: 50px;
+    height: 60px;
     outline: 1px dotted black;
     vertical-align: middle;
     display: inline-block;
 }
 
 .store_logo {
-    margin-top: 5px;
+    margin-top: 10px;
     text-align: left;
     display: inline-block;
-    height: 80%;
+    height: 65%;
 }
 
 .store_name {
@@ -808,7 +823,6 @@ body{
     height: 60px;
     vertical-align: middle;
     display: inline-block;
-    padding-top: 15px;
 }
 
 /*
@@ -817,28 +831,11 @@ body{
 
 */
 
-.compare_prices {
-    border-radius: 4px;
-    font-size: 16px;
-    height: 30px;
-    width: 180px;
-
-    margin-top: 10px;
-
-    border: 2px linear-gradient(#00bfff,#0099cc);
-    background-image: linear-gradient(#00bfff,#0099cc);
-
-    font-weight: bold;
-    color: white;
-    /*padding: ;*/
-}
-
 .compare_prices_wrapper {
     width: 100%;
-    height: 50px;
+    height: 60px;
 
     position: absolute;
-    bottom: 55;
     left: 0;
     display: inline-block;
     text-align: center;
