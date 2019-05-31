@@ -87,23 +87,12 @@ function buildResultsList() {
             <h2> ${searchResults[i].Size} ${searchResults[i].Unit} </h2>
 
             <span class="result_price"> ${priceString} </span>
-
-            <!--<div class="result_lower">-->
-                <!--<div class="result_store_list">-->
-                    <!--<img src="images/logos/target.gif">-->
-                    <!--<img src="images/logos/d&d2.png">-->
-                    <!--<img src="images/logos/jewel.png">-->
-                    <!--<img src="images/logos/traderjoes.jpg">-->
-                    <!--<img src="images/logos/wholefoods.png">-->
-                <!--</div>-->
-                <!--<button class="result_add" content="Add"> Add </button>-->
-            <!--</div>-->
-
             `
             rUpperElement.onclick = function itemDetails(){
                 sessionStorage.setItem('itemDetails',JSON.stringify(searchResults[i]));
                 window.location.href = 'item_details.html';
             }
+            rUpperElement.style.cursor = 'pointer';
             result.appendChild(rUpperElement);
 
             var rLowerElement = document.createElement("div");
@@ -145,6 +134,7 @@ function buildResultsList() {
                 document.getElementById("add_area_" + searchResults[i]["ID"]).style.display = "block";
 
             };
+            rbElement.style.cursor = 'pointer';
             rLowerElement.appendChild(rbElement);
 
 
@@ -168,6 +158,7 @@ function buildResultsList() {
                 sessionStorage.setItem('cartItems',JSON.stringify(cartItems));
 
             };
+            add_circ.style.cursor = 'pointer';
             addedElement.appendChild(add_circ);
 
             var edit_field = document.createElement("input");
@@ -199,6 +190,7 @@ function buildResultsList() {
                 sessionStorage.setItem('cartItems',JSON.stringify(cartItems));
 
             };
+            rem_circ.style.cursor = 'pointer';
             let cartItems = JSON.parse(sessionStorage.getItem('cartItems'));
             if(cartItems[searchResults[i]["ID"]] != null){
                 console.log('MORE THAN ONE ITEM IN CART for: ' + searchResults[i]["ID"]);

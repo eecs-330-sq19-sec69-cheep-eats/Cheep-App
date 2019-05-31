@@ -33,9 +33,9 @@
 
                 <button class="account_button" id="add_button" style="margin: 15px auto 0 auto" onclick="addItemToCart()">Add to Cart</button>
                 <div class="item_add_area" id="add_area">
-                    <span class="material_icons" onclick="removeOne()">remove_circle_outline</span>
+                    <span class="material_icons" onclick="removeOne()" style="cursor: pointer">remove_circle_outline</span>
                     <input type="text" class="item_edit_field" id="inCart">
-                    <span class="material_icons" onclick="addOne()">add_circle_outline</span>
+                    <span class="material_icons" onclick="addOne()" style="cursor: pointer">add_circle_outline</span>
                 </div>
 
             </div>
@@ -121,15 +121,12 @@
 
             <div id="menu">
                 <a href="search_landing.html" style="background-color: #f9ef90;" class="menu_tab">
-                    <!--<img id="mag_glass" src="images/mag_glass.png" style="width: 40px;">-->
                     <div class="material_icon_footer"> search </div>
                 </a>
-                <div class="menu_tab">
-                    <!--<img id="shop_cart" src="images/shop_cart.png" style="width: 40px;">-->
+                <a href="my_cart.html" class="menu_tab">
                     <div class="material_icon_footer"> shopping_cart </div>
-                </div>
+                </a>
                 <a href="user_profile.html" class="menu_tab">
-                    <!--<a href="user_profile.html" style="text-decoration: none; color: black;"><img id="profile" src="images/profile.svg" style="width: 40px;"></a>-->
                     <div class="material_icon_footer"> account_circle </div>
                 </a>
             </div>
