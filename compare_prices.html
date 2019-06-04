@@ -17,85 +17,85 @@
                 Compare Prices
             </div>
 
-            <div class="quantity_header">Has All Items</div>
+            <!--<div class="quantity_header">Has All Items</div>
 
-                <div class="store_result">
-                    <div class="row">
-                        <div class="column left">
-                            <img src="images/logos/jewel.png" class="store_logo">
-                        </div>
-                        <div class="column middle">
-                            <div class="store_name">Jewel Osco</div>
-                            <div class="store_distance">1.2 miles</div>
-                        </div>
-                        <div class="column right">
-                            <div class="store_price">$12.49</div>
-                        </div>
+            <div class="store_result">
+                <div class="row">
+                    <div class="column left">
+                        <img src="images/logos/jewel.png" class="store_logo">
+                    </div>
+                    <div class="column middle">
+                        <div class="store_name">Jewel Osco</div>
+                        <div class="store_distance">1.2 miles</div>
+                    </div>
+                    <div class="column right">
+                        <div class="store_price">$12.49</div>
                     </div>
                 </div>
+            </div>
 
-                <div class="store_result"><a href="cart_breakdown.html">
-                    <div class="row">
-                        <div class="column left">
-                            <img src="images/logos/target.gif" class="store_logo">
-                        </div>
-                        <div class="column middle">
-                            <div class="store_name">Target</div>
-                            <div class="store_distance">0.5 miles</div>
-                        </div>
-                        <div class="column right">
-                            <div class="store_price">$13.67</div>
-                        </div>
+            <div class="store_result"><a href="cart_breakdown.html">
+                <div class="row">
+                    <div class="column left">
+                        <img src="images/logos/target.gif" class="store_logo">
                     </div>
-                </a>
+                    <div class="column middle">
+                        <div class="store_name">Target</div>
+                        <div class="store_distance">0.5 miles</div>
+                    </div>
+                    <div class="column right">
+                        <div class="store_price">$13.67</div>
+                    </div>
                 </div>
+            </a>
+            </div>
 
             <div class="quantity_header">Missing One or More Items</div>
 
-                <div class="store_result">
-                    <div class="row">
-                        <div class="column left">
-                            <img src="images/logos/traderjoes.jpg" class="store_logo">
-                        </div>
-                        <div class="column middle">
-                            <div class="store_name">Trader Joe's</div>
-                            <div class="store_distance">1.3 miles</div>
-                        </div>
-                        <div class="column right">
-                            <div class="store_price">$3.99</div>
-                        </div>
+            <div class="store_result">
+                <div class="row">
+                    <div class="column left">
+                        <img src="images/logos/traderjoes.jpg" class="store_logo">
+                    </div>
+                    <div class="column middle">
+                        <div class="store_name">Trader Joe's</div>
+                        <div class="store_distance">1.3 miles</div>
+                    </div>
+                    <div class="column right">
+                        <div class="store_price">$3.99</div>
                     </div>
                 </div>
+            </div>
 
-                <div class="store_result">
-                    <div class="row">
-                        <div class="column left">
-                            <img src="images/logos/wholefoods.png" class="store_logo">
-                        </div>
-                        <div class="column middle">
-                            <div class="store_name">Whole Foods</div>
-                            <div class="store_distance">0.3 miles</div>
-                        </div>
-                        <div class="column right">
-                            <div class="store_price">$4.12</div>
-                        </div>
+            <div class="store_result">
+                <div class="row">
+                    <div class="column left">
+                        <img src="images/logos/wholefoods.png" class="store_logo">
+                    </div>
+                    <div class="column middle">
+                        <div class="store_name">Whole Foods</div>
+                        <div class="store_distance">0.3 miles</div>
+                    </div>
+                    <div class="column right">
+                        <div class="store_price">$4.12</div>
                     </div>
                 </div>
+            </div>
 
-                <div class="store_result">
-                    <div class="row">
-                        <div class="column left">
-                            <img src="images/logos/d&d2.png" class="store_logo">
-                        </div>
-                        <div class="column middle">
-                            <div class="store_name">D&D's</div>
-                            <div class="store_distance">0.5 miles</div>
-                        </div>
-                        <div class="column right">
-                            <div class="store_price">$5.49</div>
-                        </div>
+            <div class="store_result">
+                <div class="row">
+                    <div class="column left">
+                        <img src="images/logos/d&d2.png" class="store_logo">
+                    </div>
+                    <div class="column middle">
+                        <div class="store_name">D&D's</div>
+                        <div class="store_distance">0.5 miles</div>
+                    </div>
+                    <div class="column right">
+                        <div class="store_price">$5.49</div>
                     </div>
                 </div>
+            </div>-->
 
             <div id="menu">
                 <a href="search_landing.html" class="menu_tab">
@@ -120,7 +120,7 @@
 
                 //ORDER: D&D's, Jewel Osco, Target, Trader Joe's, Whole Foods
                 let totalPrices = [0,0,0,0,0];
-                let missing = [false, false, false, false, false];
+                let missing = [0,0,0,0,0];
 
                 for(let i = 0; i < cartItems.length; i++){
 
@@ -139,7 +139,7 @@
                                 totalPrices[s] += parseFloat(prices[s]);
                             }
                             else{
-                                missing[s] = true;
+                                missing[s] = missing[s] + 1;
                                 console.log('Store ' + s + ' is missing ' + cartItems[i]["Name"]);
                             }
 
@@ -149,12 +149,117 @@
 
                 }//end cartItems for loop
 
-                //totalPrices = totalPrices.map(a => a.toFixed(2));
-
                 console.log(totalPrices);
                 console.log(missing);
 
+                var storeLogos = ["images/logos/d&d2.png",
+                    "images/logos/jewel.png",
+                    "images/logos/target.gif",
+                    "images/logos/traderjoes.jpg",
+                    "images/logos/wholefoods.png"
+                ];
 
+                var stores = ["D&D's","Jewel Osco","Target","Trader Joe's","Whole Foods"];
+                var dists = ["0.5 miles","1.2 miles","0.5 miles","1.3 miles","0.3 miles"];
+
+                let divScreen = document.getElementById('screen');
+
+                if(missing.includes(0)){
+                    let allHeader = document.createElement("div");
+                    allHeader.classList.add('quantity_header');
+                    allHeader.innerHTML = 'Has All Items';
+                    divScreen.appendChild(allHeader);
+                }
+
+
+                let allStores = [];
+                let allStorePrices = [];
+
+                for(let i = 0; i < missing.length; i++) {
+
+                    //if store isn't missing any items
+                    if (missing[i] == 0) {
+
+                        let storeEl = document.createElement('div');
+                        storeEl.classList.add('store_result');
+                        storeEl.innerHTML = `
+                            <div class="store_result">
+                                <div class="row">
+                                    <div class="column left">
+                                        <img src=${storeLogos[i]} class="store_logo">
+                                    </div>
+                                    <div class="column middle">
+                                        <div class="store_name">${stores[i]}</div>
+                                        <div class="store_distance">${dists[i]}</div>
+                                    </div>
+                                    <div class="column right">
+                                        <div class="store_price">${'$' + totalPrices[i].toFixed(2)}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        `
+                        allStores.push(storeEl);
+                        allStorePrices.push(totalPrices[i]);
+
+                    }
+
+                }
+
+                let allSortInds = Array.from(allStorePrices).sort(function(a,b) { return a - b;});
+                console.log(allSortInds);
+                for(let i = 0; i<allSortInds.length; i++) {
+                    divScreen.appendChild(allStores[allStorePrices.indexOf(allSortInds[i])]);
+                }
+
+                if(missing.reduce((a,b) => a + b, 0) > 0){
+                    let missHeader = document.createElement("div");
+                    missHeader.classList.add('quantity_header');
+                    missHeader.innerHTML = 'Missing One or More Items';
+                    divScreen.appendChild(missHeader);
+                }
+
+
+                let missStores = [];
+                let missStorePrices = [];
+
+                for(let i = 0; i < missing.length; i++) {
+
+                    //if store is missing items
+                    if (missing[i] > 0) {
+
+                        let storeEl = document.createElement('div');
+                        storeEl.classList.add('store_result');
+                        storeEl.innerHTML = `
+                            <div class="store_result">
+                                <div class="row">
+                                    <div class="column left">
+                                        <img src=${storeLogos[i]} class="store_logo">
+                                    </div>
+                                    <div class="column middle">
+                                        <div class="store_name">${stores[i]}</div>
+                                        <div class="store_distance">${dists[i]}</div>
+                                    </div>
+                                    <div class="column right">
+                                        <div class="store_price">${'$' + totalPrices[i].toFixed(2)}</div>
+                                    </div>
+                                    <div class="column alert">
+                                        <div class="material_icons">error_outline</div> ${missing[i]}
+                                    </div>
+                                </div>
+                            </div>
+                        `
+                        missStores.push(storeEl);
+                        missStorePrices.push(totalPrices[i]);
+
+                    }
+
+                }
+
+                let missSortInds = Array.from(missStorePrices).sort(function(a,b) { return a - b;});
+                console.log(missSortInds);
+                for(let i = 0; i<missSortInds.length; i++) {
+                    divScreen.appendChild(missStores[missStorePrices.indexOf(missSortInds[i])]);
+                }
 
             }
             comparePrices();
