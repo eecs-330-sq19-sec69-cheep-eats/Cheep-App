@@ -105,6 +105,10 @@
             }
 
             function logout(){
+                firebase.database().ref('users/'+sessionStorage.getItem('username')).update({
+                    recentSearches: localStorage.getItem('recentSearches')
+                });
+
                 sessionStorage.setItem('username','');
                 window.location.href = 'index.html';
             }

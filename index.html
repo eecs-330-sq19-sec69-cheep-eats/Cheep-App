@@ -71,7 +71,8 @@
                             alert('Incorrect password');
                         }
                         else{
-                            sessionStorage.setItem('username',snapshot.child('username').val())
+                            localStorage.setItem('recentSearches',snapshot.child('recentSearches').val());
+                            sessionStorage.setItem('username',snapshot.child('username').val());
                             window.location.href = 'search_landing.html';
                         }
                 }));
