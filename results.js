@@ -55,6 +55,7 @@ function buildResultsList() {
             console.log("adding new item " + searchResults[i].Name);
             var result = document.createElement("div");
             result.classList.add("result");
+            result.id = "result_" + searchResults[i]["ID"];
 
             var lowest = "";
             var highest = "";
@@ -129,6 +130,7 @@ function buildResultsList() {
                 sessionStorage.setItem('cartItems',JSON.stringify(cartItems));
 
                 document.getElementById("inCart_" + searchResults[i]["ID"]).value = 1;
+                document.getElementById("result_" + searchResults[i]["ID"]).style.boxShadow = '1px 2px 2px deepskyblue';
 
                 document.getElementById("add_button_" + searchResults[i]["ID"]).style.display = "none";
                 document.getElementById("add_area_" + searchResults[i]["ID"]).style.display = "block";
@@ -182,6 +184,8 @@ function buildResultsList() {
                 if(cartItems[searchResults[i]["ID"]]["In Cart"] == 0){
                     cartItems[searchResults[i]["ID"]] = null;
 
+                    document.getElementById("result_" + searchResults[i]["ID"]).style.boxShadow = '1px 2px 2px lightgrey';
+
                     document.getElementById("add_button_" + searchResults[i]["ID"]).style.display = "block";
                     document.getElementById("add_area_" + searchResults[i]["ID"]).style.display = "none";
                 }
@@ -191,17 +195,17 @@ function buildResultsList() {
 
             };
             rem_circ.style.cursor = 'pointer';
+            addedElement.appendChild(rem_circ);
+            rLowerElement.appendChild(addedElement);
+
             let cartItems = JSON.parse(sessionStorage.getItem('cartItems'));
             if(cartItems[searchResults[i]["ID"]] != null){
                 console.log('MORE THAN ONE ITEM IN CART for: ' + searchResults[i]["ID"]);
                 edit_field.value = cartItems[searchResults[i]["ID"]]["In Cart"];
+                result.style.boxShadow = '1px 2px 2px deepskyblue';
                 rbElement.style.display = "none";
                 addedElement.style.display = "block";
             }
-
-            addedElement.appendChild(rem_circ);
-
-            rLowerElement.appendChild(addedElement);
 
 
             RLElement.appendChild(result);
