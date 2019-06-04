@@ -117,8 +117,8 @@
         <script>
             function comparePrices(){
                 let cartItems = JSON.parse(sessionStorage.getItem('cartItems'));
+                var stores = ["D&D's","Jewel Osco","Target","Trader Joe's","Whole Foods"];
 
-                //ORDER: D&D's, Jewel Osco, Target, Trader Joe's, Whole Foods
                 let totalPrices = [0,0,0,0,0];
                 let missing = [0,0,0,0,0];
 
@@ -140,7 +140,7 @@
                             }
                             else{
                                 missing[s] = missing[s] + 1;
-                                console.log('Store ' + s + ' is missing ' + cartItems[i]["Name"]);
+                                console.log(stores[s] + ' is missing ' + cartItems[i]["Name"]);
                             }
 
                         }
@@ -159,7 +159,6 @@
                     "images/logos/wholefoods.png"
                 ];
 
-                var stores = ["D&D's","Jewel Osco","Target","Trader Joe's","Whole Foods"];
                 var dists = ["0.5 miles","1.2 miles","0.5 miles","1.3 miles","0.3 miles"];
 
                 let divScreen = document.getElementById('screen');

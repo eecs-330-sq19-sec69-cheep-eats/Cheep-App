@@ -69,9 +69,6 @@
         <script>
             function writeUserData(){
                 console.log('Write Function Called');
-                
-                localStorage.setItem('recentSearches',JSON.stringify([]));
-                sessionStorage.setItem('cartItems',JSON.stringify((new Array(20).fill(null))));
 
                 if(document.getElementById('create_username').value == "" || document.getElementById('create_email').value == "" || document.getElementById('create_password').value == "" || document.getElementById('create_confpassword').value == ""){
                     alert('Please fill all required fields.');
@@ -90,8 +87,11 @@
                     street: document.getElementById('create_street').value,
                     city: document.getElementById('create_city').value,
                     state: document.getElementById('create_state').value,
-                    zip: document.getElementById('create_zip').value
+                    zip: document.getElementById('create_zip').value,
+                    recentSearches: JSON.stringify([])
                 }).then(() => {
+                    localStorage.setItem('recentSearches',JSON.stringify([]));
+                    sessionStorage.setItem('cartItems',JSON.stringify((new Array(20).fill(null))));
                     sessionStorage.setItem('username', document.getElementById('create_username').value);
                     console.log(sessionStorage.getItem('username'));
                     window.location.href = 'search_landing.html';
