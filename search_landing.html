@@ -52,7 +52,7 @@
             console.log(sessionStorage.getItem('username'));
 
             console.log(sessionStorage.getItem('searchText'));
-            if(sessionStorage.getItem('searchText') != 'null'){
+            if(sessionStorage.getItem('searchText') != 'null' && sessionStorage.getItem('searchText') != null){
                 window.location.href = 'results.html';
             }
         </script>
