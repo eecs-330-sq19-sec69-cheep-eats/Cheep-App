@@ -27,9 +27,9 @@
             </div>
 
             <div id="menu">
-                <a href="search_landing.html" class="menu_tab" style="background-color: #f9ef90;">
+                <div onclick="returnToLanding()" class="menu_tab" style="background-color: #f9ef90;">
                     <div class="material_icon_footer"> search </div>
-                </a>
+                </div>
                 <a href="my_cart.html" class="menu_tab">
                     <div class="material_icon_footer"> shopping_cart </div>
                 </a>
@@ -388,6 +388,14 @@
             }
             buildRecentList();
             console.log(JSON.parse(localStorage.getItem('recentSearches')));
+            console.log(sessionStorage.getItem('searchText'));
+        </script>
+
+        <script>
+            function returnToLanding(){
+                sessionStorage.setItem('searchText',null);
+                window.location.href = 'search_landing.html';
+            }
         </script>
 
     </body>
