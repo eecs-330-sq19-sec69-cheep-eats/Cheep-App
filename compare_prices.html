@@ -119,6 +119,8 @@
                 let cartItems = JSON.parse(sessionStorage.getItem('cartItems'));
                 var stores = ["D&D's","Jewel Osco","Target","Trader Joe's","Whole Foods"];
 
+                console.log(cartItems);
+
                 let totalPrices = [0,0,0,0,0];
                 let missing = [0,0,0,0,0];
 
@@ -136,7 +138,8 @@
                         for(let s = 0; s<5; s++){
 
                             if(prices[s] !== ""){
-                                totalPrices[s] += parseFloat(prices[s]);
+                                console.log('Price of ' + cartItems[i]["Name"] + ' at ' + stores[s] + ': ' + prices[s]);
+                                totalPrices[s] += parseFloat(prices[s])*cartItems[i]["In Cart"];
                             }
                             else{
                                 missing[s] = missing[s] + 1;

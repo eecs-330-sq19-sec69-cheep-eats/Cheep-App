@@ -195,6 +195,17 @@
                                     document.getElementById("result_" + i).style.display = "none";
                                 }
 
+                                if(cartItems.every(el => el === null)){
+                                    let noItems = document.createElement('p');
+                                    noItems.innerHTML = 'No Items Yet!';
+                                    noItems.style.marginTop = '80px';
+                                    noItems.style.fontSize = '16pt';
+                                    noItems.style.marginLeft = '8px';
+                                    noItems.style.color = 'gray';
+                                    document.getElementById('results').appendChild(noItems);
+                                    document.getElementById('compare_button').style.display = "none";
+                                }
+
                                 console.log(cartItems[i]);
                                 sessionStorage.setItem('cartItems',JSON.stringify(cartItems));
 
