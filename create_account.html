@@ -88,9 +88,10 @@
                     city: document.getElementById('create_city').value,
                     state: document.getElementById('create_state').value,
                     zip: document.getElementById('create_zip').value,
-                    recentSearches: JSON.stringify([])
+                    recentSearches: JSON.stringify([]),
+                    cartItems: JSON.stringify((new Array(20).fill(null)))
                 }).then(() => {
-                    localStorage.setItem('recentSearches',JSON.stringify([]));
+                    localStorage.setItem('recentSearches',JSON.stringify(['milk','eggs']));
                     sessionStorage.setItem('cartItems',JSON.stringify((new Array(20).fill(null))));
                     sessionStorage.setItem('username', document.getElementById('create_username').value);
                     console.log(sessionStorage.getItem('username'));

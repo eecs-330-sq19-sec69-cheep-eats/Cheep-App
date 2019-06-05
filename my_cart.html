@@ -112,7 +112,7 @@
                                 var priceString = lowest.toString();
                             } else {
                                 console.log(lowest, highest);
-                                var priceString = "$" + lowest.toString() + " - " + "$" + highest.toString();
+                                var priceString = "$" + lowest.toFixed(2) + " - " + "$" + highest.toFixed(2);
                             }
 
                             let rUpperElement = document.createElement("div");
