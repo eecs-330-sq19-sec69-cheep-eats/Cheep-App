@@ -50,6 +50,11 @@
 
         <script>
             console.log(sessionStorage.getItem('username'));
+
+            console.log(sessionStorage.getItem('searchText'));
+            if(sessionStorage.getItem('searchText') != 'null'){
+                window.location.href = 'results.html';
+            }
         </script>
 
         <!-- The core Firebase JS SDK is always required and must be listed first -->
