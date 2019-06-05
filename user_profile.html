@@ -106,7 +106,8 @@
 
             function logout(){
                 firebase.database().ref('users/'+sessionStorage.getItem('username')).update({
-                    recentSearches: localStorage.getItem('recentSearches')
+                    recentSearches: localStorage.getItem('recentSearches'),
+                    cartItems: sessionStorage.getItem('cartItems')
                 });
 
                 sessionStorage.setItem('username','');

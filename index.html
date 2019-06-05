@@ -57,9 +57,6 @@
             function login(){
                 console.log('Login Function Called');
 
-                localStorage.setItem('recentSearches',JSON.stringify([]));
-                sessionStorage.setItem('cartItems',JSON.stringify((new Array(20).fill(null))));
-
                 firebase.database().ref('/users/' + document.getElementById('login_username').value).once("value").then(function(snapshot) {
                     if (!snapshot.exists()){
                         alert('That username does not exist');
@@ -71,6 +68,7 @@
                             alert('Incorrect password');
                         }
                         else{
+                            sessionStorage.setItem('cartItems',snapshot.child('cartItems').val());
                             localStorage.setItem('recentSearches',snapshot.child('recentSearches').val());
                             sessionStorage.setItem('username',snapshot.child('username').val());
                             window.location.href = 'search_landing.html';
