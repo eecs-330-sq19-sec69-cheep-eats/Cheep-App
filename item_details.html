@@ -173,8 +173,8 @@
                     item["Trader Joe's Price"],
                     item["Whole Foods Price"]
                 ];
+                console.log(prices);
 
-                //let storeIDs = ["D&DPrice","JOPrice","TPrice","TJPrice","WFPrice"];
                 var storeLogos = ["images/logos/d&d2.png",
                     "images/logos/jewel.png",
                     "images/logos/target.gif",
@@ -189,15 +189,16 @@
                 let highest = "";
 
                 for(let s = 0; s < 5; s++){
-                    /*if(prices[s] == ""){
-                        document.getElementById(storeIDs[s]).style.display = "none";
-                        continue;
-                    }*/
-                    //document.getElementById("item_det_" + storeIDs[s]).innerHTML = '$' + prices[s].toFixed(2);
-                    if(lowest == "" || prices[s] < lowest)
-                        lowest =  prices[s];
-                    if(highest == "" || prices[s] > highest)
-                        highest =  prices[s];
+                    if(prices[s] != ""){
+
+                        if(lowest == "" || prices[s] < lowest) {
+                            lowest = prices[s];
+                        }
+                        if(highest == "" || prices[s] > highest) {
+                            highest = prices[s];
+                        }
+
+                    }
                 }
 
                 if (lowest == highest) {
