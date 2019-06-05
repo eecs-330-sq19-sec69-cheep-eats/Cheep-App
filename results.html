@@ -216,7 +216,7 @@
                 var newSearchResults = [];
                 var changed = false;
 
-                if(filters.reduce((a,b) => a+b,0) > 0){
+                if(filters.reduce((a,b) => a+b,0) < 5){
 
                     changed = true;
 
@@ -303,7 +303,7 @@
                 var stores = ["DDs","Jewel","Target","TJ","WF"];
 
                 if(sessionStorage.getItem('filterValues') == undefined){
-                    var filterValues = [0,0,0,0,0];
+                    var filterValues = [1,1,1,1,1];
                 }
                 else {
                     var filterValues = JSON.parse(sessionStorage.getItem('filterValues'));
@@ -311,7 +311,7 @@
 
                 console.log(filterValues);
 
-                if(filterValues.reduce((a,b) => a+b,0) > 0){
+                if(filterValues.reduce((a,b) => a+b,0) < 5){
                     document.getElementById('filter_icon').style.color = "orange";
                 }
 
@@ -348,7 +348,7 @@
 
                 document.getElementById('search_field').style.color = "black";
 
-                sessionStorage.setItem('filterValues',JSON.stringify([0,0,0,0,0]));
+                sessionStorage.setItem('filterValues',JSON.stringify([1,1,1,1,1]));
                 sessionStorage.setItem('filterRange',JSON.stringify(["",""]));
 
                 document.getElementById('SE_search_field').value = sessionStorage.getItem('searchText');
