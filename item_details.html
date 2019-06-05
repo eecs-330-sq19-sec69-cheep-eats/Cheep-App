@@ -40,9 +40,9 @@
 
             </div>
 
-            <div class="store_results_wrapper">
+            <div id="store_results_wrapper">
 
-                <div class="store_result" id="D&DPrice">
+                <!--<div class="store_result" id="D&DPrice">
                     <div class="row">
                         <div class="column left">
                             <img src="images/logos/d&d2.png" class="store_logo">
@@ -115,7 +115,7 @@
                             <div class="store_price" id="item_det_WFPrice"></div>
                         </div>
                     </div>
-                </div>
+                </div>-->
 
             </div>
 
@@ -173,22 +173,32 @@
                     item["Trader Joe's Price"],
                     item["Whole Foods Price"]
                 ];
+                console.log(prices);
 
-                let storeIDs = ["D&DPrice","JOPrice","TPrice","TJPrice","WFPrice"];
+                var storeLogos = ["images/logos/d&d2.png",
+                    "images/logos/jewel.png",
+                    "images/logos/target.gif",
+                    "images/logos/traderjoes.jpg",
+                    "images/logos/wholefoods.png"
+                ];
+                var stores = ["D&D's","Jewel Osco","Target","Trader Joe's","Whole Foods"];
+                var dists = ["0.5 miles","1.2 miles","0.5 miles","1.3 miles","0.3 miles"];
+
 
                 let lowest = "";
                 let highest = "";
 
                 for(let s = 0; s < 5; s++){
-                    if(prices[s] == ""){
-                        document.getElementById(storeIDs[s]).style.display = "none";
-                        continue;
+                    if(prices[s] != ""){
+
+                        if(lowest == "" || prices[s] < lowest) {
+                            lowest = prices[s];
+                        }
+                        if(highest == "" || prices[s] > highest) {
+                            highest = prices[s];
+                        }
+
                     }
-                    document.getElementById("item_det_" + storeIDs[s]).innerHTML = '$' + prices[s].toFixed(2);
-                    if(lowest == "" || prices[s] < lowest)
-                        lowest =  prices[s];
-                    if(highest == "" || prices[s] > highest)
-                        highest =  prices[s];
                 }
 
                 if (lowest == highest) {
@@ -200,12 +210,57 @@
 
                 document.getElementById('item_det_range').innerHTML = priceString;
 
+
+
                 let cartItems = JSON.parse(sessionStorage.getItem('cartItems'));
                 if(cartItems[item["ID"]] != null){
                     console.log('MORE THAN ONE ITEM IN CART');
                     document.getElementById("inCart").value = cartItems[item["ID"]]["In Cart"];
                     document.getElementById("add_button").style.display = "none";
                     document.getElementById("add_area").style.display = "block";
+                }
+
+                let storeWrapper = document.getElementById('store_results_wrapper');
+                let storesArr = [];
+
+                for(let i = 0; i < prices.length; i++){
+
+                    let storeResult = document.createElement("div");
+
+                    if(prices[i]==""){
+                        storeResult = null;
+                    }
+                    else{
+                        storeResult.classList.add('store_result');
+
+                        storeResult.innerHTML = `
+                        <div class="row">
+                            <div class="column left">
+                                <img src=${storeLogos[i]} class="store_logo">
+                            </div>
+                            <div class="column middle">
+                                <div class="store_name">${stores[i]}</div>
+                                <div class="store_distance">${dists[i]}</div>
+                            </div>
+                            <div class="column right">
+                                <div class="store_price">${'$' + prices[i].toFixed(2)}</div>
+                            </div>
+                        </div>
+                    `
+                    }
+
+                    storesArr.push(storeResult);
+
+                }
+
+                console.log(storesArr);
+
+                let sortInds = Array.from(prices).sort(function(a,b) { return a - b;});
+                for(let i = 0; i < sortInds.length; i++){
+                    if(storesArr[prices.indexOf(sortInds[i])] != null){
+                        console.log('adding store');
+                        storeWrapper.appendChild(storesArr[prices.indexOf(sortInds[i])]);
+                    }
                 }
 
             }

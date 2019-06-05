@@ -669,7 +669,7 @@ body{
     border-bottom: deepskyblue 1.5px solid; !important
 }
 
-.store_results_wrapper {
+#store_results_wrapper {
     margin-top: 25px;
     overflow-y: scroll;
     overflow-x: hidden;
