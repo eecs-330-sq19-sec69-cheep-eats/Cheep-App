@@ -257,7 +257,7 @@
 
                             var price = searchResults[i][storeKeys[j]+" Price"];
 
-                            if(price !== ""){
+                            if(price !== "" && filters[j]==1){
                                 itemPrices.push(price);
                             }
 
