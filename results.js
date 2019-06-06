@@ -281,7 +281,7 @@ function searchProductData(){
 
 }
 
-function saveQuantities(){
+function saveQuantities(dest){
     console.log('Save Quantities Function Called');
     let cartItems = JSON.parse(sessionStorage.getItem('cartItems'));
     for(let i = 0; i<cartItems.length; i++){
@@ -291,4 +291,5 @@ function saveQuantities(){
         }
     }
     sessionStorage.setItem('cartItems',JSON.stringify(cartItems));
+    window.location.href = dest;
 }

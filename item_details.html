@@ -11,11 +11,11 @@
         <div id="screen">
 
             <div id="header">
-                <a href="results.html">
-                    <div class="material_icons back_arrow" onclick="saveQuantities()">
+                <div onclick="saveQuantities('results.html')" style="cursor: pointer">
+                    <div class="material_icons back_arrow">
                         arrow_back_ios
                     </div>
-                </a>
+                </div>
                 Item Details
             </div>
 
@@ -120,15 +120,15 @@
             </div>
 
             <div id="menu">
-                <a href="search_landing.html" style="background-color: #f9ef90;" class="menu_tab">
-                    <div class="material_icon_footer" onclick="saveQuantities()"> search </div>
-                </a>
-                <a href="my_cart.html" class="menu_tab">
-                    <div class="material_icon_footer" onclick="saveQuantities()"> shopping_cart </div>
-                </a>
-                <a href="user_profile.html" class="menu_tab">
-                    <div class="material_icon_footer" onclick="saveQuantities()"> account_circle </div>
-                </a>
+                <div onclick="saveQuantities('search_landing.html')" style="background-color: #f9ef90;" class="menu_tab">
+                    <div class="material_icon_footer"> search </div>
+                </div>
+                <div onclick="saveQuantities('my_cart.html')" class="menu_tab">
+                    <div class="material_icon_footer"> shopping_cart </div>
+                </div>
+                <div onclick="saveQuantities('user_profile.html')" class="menu_tab">
+                    <div class="material_icon_footer"> account_circle </div>
+                </div>
             </div>
 
         </div>
