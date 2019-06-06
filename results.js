@@ -280,3 +280,15 @@ function searchProductData(){
     });
 
 }
+
+function saveQuantities(){
+    console.log('Save Quantities Function Called');
+    let cartItems = JSON.parse(sessionStorage.getItem('cartItems'));
+    for(let i = 0; i<cartItems.length; i++){
+        if(cartItems[i] != null && document.getElementById('inCart_' + i) != null){
+            console.log('Quantity of ' + cartItems[i]['Name'] + ' became ' + document.getElementById('inCart_'+i).value);
+            cartItems[i]["In Cart"] = document.getElementById('inCart_'+i).value;
+        }
+    }
+    sessionStorage.setItem('cartItems',JSON.stringify(cartItems));
+}
