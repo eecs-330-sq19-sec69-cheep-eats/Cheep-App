@@ -117,7 +117,19 @@
         <script>
             function comparePrices(){
                 let cartItems = JSON.parse(sessionStorage.getItem('cartItems'));
-                var stores = ["D&D's","Jewel Osco","Target","Trader Joe's","Whole Foods"];
+
+                if(cartItems.every(element => element === null)){
+                    let noItems = document.createElement('p');
+                    noItems.innerHTML = 'No Items Yet!';
+                    noItems.style.marginTop = '80px';
+                    noItems.style.fontSize = '16pt';
+                    noItems.style.marginLeft = '8px';
+                    noItems.style.color = 'gray';
+                    document.getElementById('screen').appendChild(noItems);
+                    return;
+                }
+
+                var stores = ["D & D's","Jewel Osco","Target","Trader Joe's","Whole Foods"];
 
                 console.log(cartItems);
 
@@ -185,21 +197,24 @@
                         let storeEl = document.createElement('div');
                         storeEl.classList.add('store_result');
                         storeEl.innerHTML = `
-                            <div class="store_result">
-                                <div class="row">
-                                    <div class="column left">
-                                        <img src=${storeLogos[i]} class="store_logo">
-                                    </div>
-                                    <div class="column middle">
-                                        <div class="store_name">${stores[i]}</div>
-                                        <div class="store_distance">${dists[i]}</div>
-                                    </div>
-                                    <div class="column right">
-                                        <div class="store_price">${'$' + totalPrices[i].toFixed(2)}</div>
-                                    </div>
+                            <div class="row">
+                                <div class="column left">
+                                    <img src=${storeLogos[i]} class="store_logo">
+                                </div>
+                                <div class="column middle">
+                                    <div class="store_name">${stores[i]}</div>
+                                    <div class="store_distance">${dists[i]}</div>
+                                </div>
+                                <div class="column right">
+                                    <div class="store_price">${'$' + totalPrices[i].toFixed(2)}</div>
                                 </div>
                             </div>
                         `
+                        storeEl.onclick = function cartBreakdown(){
+                            sessionStorage.setItem('cartBreakdown',JSON.stringify([stores[i],storeLogos[i],dists[i],totalPrices[i]]));
+                            window.location.href = 'cart_breakdown.html';
+                        }
+                        storeEl.style.cursor = 'pointer';
                         allStores.push(storeEl);
                         allStorePrices.push(totalPrices[i]);
 
@@ -232,24 +247,27 @@
                         let storeEl = document.createElement('div');
                         storeEl.classList.add('store_result');
                         storeEl.innerHTML = `
-                            <div class="store_result">
-                                <div class="row">
-                                    <div class="column left">
-                                        <img src=${storeLogos[i]} class="store_logo">
-                                    </div>
-                                    <div class="column middle">
-                                        <div class="store_name">${stores[i]}</div>
-                                        <div class="store_distance">${dists[i]}</div>
-                                    </div>
-                                    <div class="column right">
-                                        <div class="store_price">${'$' + totalPrices[i].toFixed(2)}</div>
-                                    </div>
-                                    <div class="column alert">
-                                        <div class="material_icons">error_outline</div> ${missing[i]}
-                                    </div>
+                            <div class="row">
+                                <div class="column left">
+                                    <img src=${storeLogos[i]} class="store_logo">
+                                </div>
+                                <div class="column middle">
+                                    <div class="store_name">${stores[i]}</div>
+                                    <div class="store_distance">${dists[i]}</div>
+                                </div>
+                                <div class="column right">
+                                    <div class="store_price">${'$' + totalPrices[i].toFixed(2)}</div>
+                                </div>
+                                <div class="column alert">
+                                    <div class="material_icons">error_outline</div> ${missing[i]}
                                 </div>
                             </div>
                         `
+                        storeEl.onclick = function cartBreakdown(){
+                            sessionStorage.setItem('cartBreakdown',JSON.stringify([stores[i],storeLogos[i],dists[i],totalPrices[i]]));
+                            window.location.href = 'cart_breakdown.html';
+                        }
+                        storeEl.style.cursor = 'pointer';
                         missStores.push(storeEl);
                         missStorePrices.push(totalPrices[i]);
 

@@ -823,6 +823,7 @@ body{
     font-weight: bold;
     background-color: deepskyblue;
     color: white;
+    cursor: default;
 }
 
 /*
@@ -836,6 +837,21 @@ body{
     height: 60px;
     vertical-align: middle;
     display: inline-block;
+    cursor: default;
+}
+
+.quantity {
+    float: right;
+    margin-right: 30px;
+    display: inline-block;
+    line-height: 20px;
+    vertical-align: middle;
+    font-size: 13pt;
+}
+
+.quantity .material_icons {
+    line-height: 20px;
+    vertical-align: middle;
 }
 
 /*

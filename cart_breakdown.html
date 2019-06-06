@@ -20,32 +20,36 @@
             <div class="store_result_header" style="box-shadow: 0px 2px 2px -2px grey">
                 <div class="row">
                     <div class="column left">
-                        <img src="images/logos/target.gif" class="store_logo">
+                        <img src="images/logos/target.gif" class="store_logo" id="breakdown_logo">
                     </div>
                     <div class="column middle">
-                        <div class="store_name">Target</div>
-                        <div class="store_distance">0.5 miles</div>
+                        <div class="store_name" id="breakdown_name">Target</div>
+                        <div class="store_distance" id="breakdown_dist">0.5 miles</div>
                     </div>
                     <div class="column right" style="margin-left: 25px">
-                        <div class="store_price">$13.67</div>
+                        <div class="store_price" id="breakdown_total">$13.67</div>
                     </div>
                 </div>
             </div>
 
             <div id="results">
-                <div class="result" style="min-height: 65px;">
-                    <div class="result_img_wrapper">
-                        <img src="https://images-na.ssl-images-amazon.com/images/I/81uQm2SqxhL._SY606_.jpg" class="result_img">
-                    </div>
-                    <h1> Tuscan Dairy whole milk</h1>
-                    <h2> 1 gal</h2>
-                    <span class="result_price">$2.99</span>
+                <div id="result_list">
 
-                    <div class="result_add_area" style="display: block">
-                        <span class="material_icons" style="cursor: pointer">add_circle_outline</span>
-                        <input type="text" class="result_edit_field">
-                        <span class="material_icons" style="cursor: pointer">remove_circle_outline</span>
-                    </div>
+                    <!--<div class="result" style="min-height: 65px;">
+                        <div class="result_img_wrapper">
+                            <img src="https://images-na.ssl-images-amazon.com/images/I/81uQm2SqxhL._SY606_.jpg" class="result_img">
+                        </div>
+                        <h1> Tuscan Dairy whole milk</h1>
+                        <h2> 1 gal</h2>
+                        <span class="result_price">$2.99</span>
+
+                        <div class="result_add_area" style="display: block">
+                            <span class="material_icons" style="cursor: pointer">add_circle_outline</span>
+                            <input type="text" class="result_edit_field">
+                            <span class="material_icons" style="cursor: pointer">remove_circle_outline</span>
+                        </div>
+                    </div>-->
+
                 </div>
             </div>
 
@@ -65,6 +69,166 @@
             </div>
 
         </div>
+
+        <script>
+            console.log(JSON.parse(sessionStorage.getItem('cartBreakdown')));
+
+            function breakdownCart(){
+
+                let cartInfo = JSON.parse(sessionStorage.getItem('cartBreakdown'));
+                let storeName = cartInfo[0];
+                document.getElementById("breakdown_name").innerHTML = storeName;
+                document.getElementById("breakdown_logo").src = cartInfo[1];
+                document.getElementById("breakdown_dist").innerHTML = cartInfo[2];
+                document.getElementById("breakdown_total").innerHTML = '$' + cartInfo[3].toFixed(2);
+
+                let RLElement = document.getElementById("result_list");
+                document.getElementById("results").style.height = '67%';
+
+                let cartItems = JSON.parse(sessionStorage.getItem('cartItems'));
+
+                for(let i = 0; i < cartItems.length; i++){
+
+                    //if item in cart
+                    if(cartItems[i] != null){
+
+                        //if store has item
+                        if(cartItems[i][storeName + " Price"] != ""){
+
+                            let result = document.createElement("div");
+                            result.classList.add("result");
+                            result.id = "result_" + i;
+                            result.style.minHeight = '80px';
+
+                            let rUpperElement = document.createElement("div");
+                            rUpperElement.classList.add('result_upper');
+                            rUpperElement.innerHTML =`
+                                <div class="result_img_wrapper">
+                                    <img src=${cartItems[i]["Image"]} class="result_img">
+                                </div>
+                                <h1>${cartItems[i]["Name"]}</h1>
+                                <h2>${cartItems[i]["Size"] + " " + cartItems[i]["Unit"]}</h2>
+                                <span class="result_price">${'$' + cartItems[i][storeName + " Price"].toFixed(2)}</span>
+                            `
+
+                            //ALLOW CHANGING OF QUANTITY
+                            /*let addedElement = document.createElement("div");
+                            addedElement.classList.add("result_add_area");
+                            addedElement.id = "add_area_" + i;
+
+                            let add_circ = document.createElement("span");
+                            add_circ.classList.add("material_icons");
+                            add_circ.innerHTML = 'add_circle_outline';
+                            add_circ.onclick = function addOne(){
+                                console.log('Add Function Called');
+                                console.log('ID: ' + i);
+
+                                let cartItems = JSON.parse(sessionStorage.getItem('cartItems'));
+                                cartItems[i]["In Cart"] = parseInt(document.getElementById("inCart_" + i).value) + 1;
+
+                                document.getElementById("inCart_" + i).value = cartItems[i]["In Cart"];
+
+                                console.log(cartItems[i]);
+                                sessionStorage.setItem('cartItems',JSON.stringify(cartItems));
+
+                            };
+                            add_circ.style.cursor = 'pointer';
+                            addedElement.appendChild(add_circ);
+
+                            let edit_field = document.createElement("input");
+                            edit_field.type = 'text';
+                            edit_field.classList.add('result_edit_field');
+                            edit_field.id = "inCart_" + i;
+                            addedElement.appendChild(edit_field);
+
+                            let rem_circ = document.createElement("span");
+                            rem_circ.classList.add("material_icons");
+                            rem_circ.innerHTML = 'remove_circle_outline';
+                            rem_circ.onclick = function removeOne(){
+                                console.log('Remove Function Called');
+                                console.log('ID: ' + i);
+
+                                let cartItems = JSON.parse(sessionStorage.getItem('cartItems'));
+                                cartItems[i]["In Cart"] = parseInt(document.getElementById("inCart_" + i).value) - 1;
+
+                                document.getElementById("inCart_" + i).value = cartItems[i]["In Cart"];
+
+                                if(cartItems[i]["In Cart"] == 0){
+                                    cartItems[i] = null;
+
+                                    document.getElementById("result_" + i).style.display = "none";
+                                }
+
+                                if(cartItems.every(el => el === null)){
+                                    let noItems = document.createElement('p');
+                                    noItems.innerHTML = 'No Items Yet!';
+                                    noItems.style.marginTop = '-200px';
+                                    noItems.style.fontSize = '16pt';
+                                    noItems.style.marginLeft = '8px';
+                                    noItems.style.color = 'gray';
+                                    document.getElementById('results').appendChild(noItems);
+                                }
+
+                                console.log(cartItems[i]);
+                                sessionStorage.setItem('cartItems',JSON.stringify(cartItems));
+
+                            };
+                            rem_circ.style.cursor = 'pointer';
+                            addedElement.appendChild(rem_circ);
+
+                            addedElement.style.display = "block";
+                            edit_field.value = cartItems[i]["In Cart"];
+
+                            rUpperElement.appendChild(addedElement);*/
+
+                            //ONLY SHOW QUANTITY, DON'T ALLOW CHANGE
+                            let quant = document.createElement("div");
+                            quant.classList.add('quantity');
+                            quant.innerHTML = `
+                                <div class="material_icons">add_shopping_cart</div> ${cartItems[i]["In Cart"]}
+                            `
+                            rUpperElement.appendChild(quant);
+
+                            result.appendChild(rUpperElement);
+
+                            result.style.boxShadow = '1px 2px 2px deepskyblue';
+                            RLElement.appendChild(result);
+
+                        }
+                        //store doesn't have item
+                        else{
+
+                            let result = document.createElement("div");
+                            result.classList.add("result");
+                            result.id = "result_" + i;
+                            result.style.minHeight = '75px';
+
+                            result.innerHTML = `
+                                <div class="result_upper">
+                                    <div class="result_img_wrapper">
+                                        <img src=${cartItems[i]["Image"]} class="result_img">
+                                    </div>
+
+                                    <h1>${cartItems[i]["Name"]}</h1>
+                                    <h2>${cartItems[i]["Size"] + " " + cartItems[i]["Unit"]}</h2>
+                                    <span class="result_price">Not Available</span>
+                                </div>
+
+                            `
+
+                            result.style.boxShadow = '1px 2px 2px orange';
+                            result.style.backgroundColor = '#E8E8E8';
+                            RLElement.appendChild(result);
+
+                        }
+
+                    }
+
+                }
+
+            }
+            breakdownCart();
+        </script>
 
     </body>
 
