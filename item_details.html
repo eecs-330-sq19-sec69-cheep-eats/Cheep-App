@@ -12,7 +12,7 @@
 
             <div id="header">
                 <a href="results.html">
-                    <div class="material_icons back_arrow">
+                    <div class="material_icons back_arrow" onclick="saveQuantities()">
                         arrow_back_ios
                     </div>
                 </a>
@@ -121,13 +121,13 @@
 
             <div id="menu">
                 <a href="search_landing.html" style="background-color: #f9ef90;" class="menu_tab">
-                    <div class="material_icon_footer"> search </div>
+                    <div class="material_icon_footer" onclick="saveQuantities()"> search </div>
                 </a>
                 <a href="my_cart.html" class="menu_tab">
-                    <div class="material_icon_footer"> shopping_cart </div>
+                    <div class="material_icon_footer" onclick="saveQuantities()"> shopping_cart </div>
                 </a>
                 <a href="user_profile.html" class="menu_tab">
-                    <div class="material_icon_footer"> account_circle </div>
+                    <div class="material_icon_footer" onclick="saveQuantities()"> account_circle </div>
                 </a>
             </div>
 
@@ -210,12 +210,11 @@
 
                 document.getElementById('item_det_range').innerHTML = priceString;
 
-
-
                 let cartItems = JSON.parse(sessionStorage.getItem('cartItems'));
                 if(cartItems[item["ID"]] != null){
                     console.log('MORE THAN ONE ITEM IN CART');
-                    document.getElementById("inCart").value = cartItems[item["ID"]]["In Cart"];
+                    document.getElementById("inCart").id = "inCart_" + item["ID"];
+                    document.getElementById("inCart_" + item["ID"]).value = cartItems[item["ID"]]["In Cart"];
                     document.getElementById("add_button").style.display = "none";
                     document.getElementById("add_area").style.display = "block";
                 }

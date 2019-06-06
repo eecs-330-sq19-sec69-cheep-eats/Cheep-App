@@ -49,19 +49,21 @@
             <div id="menu">
                 <a href="search_landing.html" class="menu_tab">
                     <!--<img id="mag_glass" src="images/mag_glass.png" style="width: 40px;">-->
-                    <div class="material_icon_footer"> search </div>
+                    <div class="material_icon_footer" onclick="saveQuantities()"> search </div>
                 </a>
                 <a href="my_cart.html" class="menu_tab" style="background-color: #f9ef90;">
                     <!--<img id="shop_cart" src="images/shop_cart.png" style="width: 40px;">-->
-                    <div class="material_icon_footer"> shopping_cart </div>
+                    <div class="material_icon_footer" onclick="saveQuantities()"> shopping_cart </div>
                 </a>
                 <a href="user_profile.html" class="menu_tab">
                     <!--<a href="user_profile.html" style="text-decoration: none; color: black;"><img id="profile" src="images/profile.svg" style="width: 40px;"></a>-->
-                    <div class="material_icon_footer"> account_circle </div>
+                    <div class="material_icon_footer" onclick="saveQuantities()"> account_circle </div>
                 </a>
             </div>
 
         </div>
+
+        <script src="results.js"></script>
 
         <script>
             var storeLogos = ["images/logos/d&d2.png",
