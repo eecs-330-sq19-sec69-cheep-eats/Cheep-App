@@ -22,16 +22,16 @@
 
             <div id="information">
                 <div class="header-piece" style="cursor: default">Email</div>
-                <div class="piece"><input type="text" class="user_info" id="create_email" required></div>
+                <label class="piece"><input type="email" class="user_info" id="create_email" autofocus required></label>
 
                 <div class="header-piece" style="cursor: default">Username</div>
-                <div class="piece"><input type="text" class="user_info" id="create_username" required></div>
+                <label class="piece"><input type="text" class="user_info" id="create_username" required></label>
 
                 <div class="header-piece" style="cursor: default">Password</div>
-                <div class="piece"><input type="password" class="user_info" id="create_password" required></div>
+                <label class="piece"><input type="password" class="user_info" id="create_password" required></label>
 
                 <div class="header-piece" style="cursor: default">Confirm Password</div>
-                <div class="piece"><input type="password" class="user_info" id="create_confpassword" required></div>
+                <label class="piece"><input type="password" class="user_info" id="create_confpassword" required></label>
 
                 <div class="header-piece" style="cursor: default">Address (optional)</div>
                 <div class="header-piece"><input type="text" class="user_info" id="create_street" placeholder="Street Address"></div>
@@ -40,8 +40,7 @@
                 <input type="text" class="user_info small_piece" id="create_zip" placeholder="ZIP"></div>
             </div>
 
-            <button onclick="writeUserData()" class="account_button" type="submit" style="margin-top: 10px;">CREATE ACCOUNT</button>
-
+            <button onclick="writeUserData()" class="account_button" style="margin-top: 10px;">CREATE ACCOUNT</button>
         </div>
 
         <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -72,6 +71,11 @@
 
                 if(document.getElementById('create_username').value == "" || document.getElementById('create_email').value == "" || document.getElementById('create_password').value == "" || document.getElementById('create_confpassword').value == ""){
                     alert('Please fill all required fields.');
+                    return;
+                }
+
+                if(document.getElementById('create_username').value.length > 8 || document.getElementById('create_password').value.length > 8){
+                    alert('Username and Password must be no longer than 8 characters.');
                     return;
                 }
 
