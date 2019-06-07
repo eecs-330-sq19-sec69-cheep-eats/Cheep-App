@@ -203,13 +203,13 @@ body{
 
 .logout {
     margin-top: 30px;
-    background-image: linear-gradient(#fcc276,#f9b254);
-    color: white;
+    background-image: linear-gradient(white,lightgray);
+    color: orange;
 }
 
 .logout:hover{
-    background-image: linear-gradient(white,lightgray);
-    color: #f9b254;
+    background-image: linear-gradient(#fcc276,#f9b254);
+    color: white;
 }
 
 /*
