@@ -308,40 +308,27 @@ body{
     overflow-y: scroll;
 }
 
-#filter_list{
-    width: 100%;
-    background-color: darkslategray;
-    height: 40px;
-    outline: none;
+#results li{
+    list-style: none;
+    margin: 8px 0;
+    padding: 0 0 6px 0;
+    /*box-shadow: 1px 1px 2px lightgrey;*/
+}
+
+#results ul{
     padding: 0;
-    margin: 0;
-    /*overflow-x: auto;*/
-    overflow-y: hidden;
-}
-
-.filter_list_element{
-    position: relative;
-    bottom: -4px;
-    padding: 5px;
-    background-color: white;
-    font-size: 15px;
-    border: 1px solid lightgrey;
-    float: left;
-    min-width: 60px;
-    margin-left: 8px;
-}
-
-#result_list{
-    width: 100%;
 }
 
 .result{
-    /*min-height: 80px;*/
+    min-height: 80px;
     /*max-height: 100px;*/
     border: solid 1px lightgrey;
     border-radius: 10px;
-    padding-bottom: 5px;
+
+    /* copied from results li*/
+    list-style: none;
     margin: 8px 2%;
+    padding: 0 0 6px 0;
     box-shadow: 1px 1px 2px lightgrey;
     cursor: default;
 }
@@ -377,7 +364,7 @@ body{
 
 .result_upper{
     width: 100%;
-    overflow: hidden;
+    height: 60px;
 }
 
 .result_lower{
@@ -386,7 +373,6 @@ body{
     display:inline-block;
     /*remove this later*/
     text-align: left;
-    /*padding-bottom: 5px;*/
 }
 
 .result_price {
@@ -645,7 +631,7 @@ body{
 
 .even {
     width: 46%;
-    /*margin-right: 10px;*/
+    margin-right: 10px;
 }
 
 .row:after {
@@ -659,9 +645,8 @@ body{
 }
 
 .item_pic {
-    margin: 0 10%;
-    /*height: 160px;*/
-    width: 80%
+    height: 160px;
+    width: 100px;
 }
 
 .item_name {
