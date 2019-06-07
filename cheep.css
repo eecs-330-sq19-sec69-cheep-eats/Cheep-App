@@ -308,27 +308,27 @@ body{
     overflow-y: scroll;
 }
 
-#results li{
-    list-style: none;
-    margin: 8px 0;
-    padding: 0 0 6px 0;
-    /*box-shadow: 1px 1px 2px lightgrey;*/
+.filter_list_element{
+    position: relative;
+    bottom: -4px;
+    padding: 5px;
+    background-color: white;
+    font-size: 15px;
+    border: 1px solid lightgrey;
+    float: left;
+    min-width: 60px;
+    margin-left: 8px;
 }
 
-#results ul{
-    padding: 0;
+#results_list{
+    width: 100%;
 }
 
 .result{
-    min-height: 80px;
-    /*max-height: 100px;*/
     border: solid 1px lightgrey;
     border-radius: 10px;
-
-    /* copied from results li*/
-    list-style: none;
+    padding-bottom: 5px;
     margin: 8px 2%;
-    padding: 0 0 6px 0;
     box-shadow: 1px 1px 2px lightgrey;
     cursor: default;
 }
@@ -363,8 +363,8 @@ body{
 }
 
 .result_upper{
+    overflow: hidden;
     width: 100%;
-    height: 60px;
 }
 
 .result_lower{
@@ -631,7 +631,7 @@ body{
 
 .even {
     width: 46%;
-    margin-right: 10px;
+    /*margin-right: 10px;*/
 }
 
 .row:after {
@@ -645,8 +645,9 @@ body{
 }
 
 .item_pic {
-    height: 160px;
-    width: 100px;
+    margin: 0 10%;
+    /*height: 160px;*/
+    width: 80%
 }
 
 .item_name {
