@@ -9,7 +9,7 @@
 
 *{font-family: Montserrat, Chiller; }
 
-#logo, .result h1, #SE_search_field {
+#logo, .result h1, #SE_search_field, #logout_yes_button, #logout_no_button {
     font-family: "Lato";
 }
 
@@ -97,6 +97,86 @@ body{
     border: none;
     outline: none;
 }
+
+#logout_popup{ display: none; }
+
+.logout_popup_text{
+    height: 100%;
+    padding: 8px;
+    border-radius: 15px;
+    font-size: 14px;
+    color: white;
+    background-color: deepskyblue;
+    opacity: .75;
+    min-width: 20px;
+    display: inline-block;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.logout_vertical_adjust{
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+}
+
+.logout_popup_text{
+    height: 100%;
+    border-radius: 15px;
+    color: #555555;
+    background-color: white;
+    opacity: .95;
+    width: 85%;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.logout_vertical_adjust{
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+    bottom: 35%;
+    height: 35%
+}
+
+.logout_message{
+    margin: 10% 6%;
+    font-size: 18pt;
+}
+
+#logout_yes_button{
+    height: 40px;
+    margin: 5px;
+    width: 100px;
+    background-color: deepskyblue;
+    border: none;
+    position: relative;
+    color: white;
+    font-size: 16pt;
+}
+
+#logout_no_button{
+    height: 40px;
+    margin: 5px;
+    width: 100px;
+    background-color: white;
+    border: #555555 solid 1px;
+    position: relative;
+    color: #555555;
+    font-size: 16pt;
+}
+
+#dark_screen{
+    opacity: .7;
+    background-color: black;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    position: absolute;
+}
+
 
 /* width */
 ::-webkit-scrollbar {
