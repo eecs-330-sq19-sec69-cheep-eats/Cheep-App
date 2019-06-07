@@ -58,13 +58,6 @@ body{
     cursor: default;
 }
 
-#stupid_title{
-    margin-right: 35px;
-    display: inline-block;
-    width: 200px;
-    text-align: center;
-}
-
 #menu {
     border-top: 1px solid gray;
     position: absolute;
@@ -201,16 +194,7 @@ body{
     color: deepskyblue;
 }
 
-.logout {
-    margin-top: 30px;
-    background-image: linear-gradient(#fcc276,#f9b254);
-    color: white;
-}
 
-.logout:hover{
-    background-image: linear-gradient(white,lightgray);
-    color: #f9b254;
-}
 
 /*
     SEARCH RESULTS PAGE
@@ -592,19 +576,6 @@ body{
     margin-left: 15px;
 }
 
-.clear_cart {
-    float: right;
-    margin-right: 15px;
-    color: black;
-}
-
-#my_stupid_cart {
-    margin-left: 35px;
-    display: inline-block;
-    width: 200px;
-    text-align: center;
-}
-
 .column {
     float: left;
     display: inline-block;
@@ -695,16 +666,12 @@ body{
 }
 
 .item_add_area .material_icons{
-    color: gray;
+    color: deepskyblue;
     font-size: 16pt;
     position: relative;
     bottom: -2px;
     padding: 0 4px;
     /*float: right;*/
-}
-
-.item_add_area .material_icons:hover{
-    color: deepskyblue;
 }
 
 .item_edit_field {
@@ -737,10 +704,6 @@ body{
     outline: 1px dotted black;
     vertical-align: middle;
     display: inline-block;
-}
-
-.store_result:hover {
-    background-color: #eff0f2;
 }
 
 .store_logo {
