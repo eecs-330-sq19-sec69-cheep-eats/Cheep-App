@@ -58,6 +58,13 @@ body{
     cursor: default;
 }
 
+#stupid_title{
+    margin-right: 35px;
+    display: inline-block;
+    width: 200px;
+    text-align: center;
+}
+
 #menu {
     border-top: 1px solid gray;
     position: absolute;
@@ -194,7 +201,16 @@ body{
     color: deepskyblue;
 }
 
+.logout {
+    margin-top: 30px;
+    background-image: linear-gradient(#ef0202,#af0000);
+    color: white;
+}
 
+.logout:hover{
+    background-image: linear-gradient(white,lightgray);
+    color: #ef0202;
+}
 
 /*
     SEARCH RESULTS PAGE
@@ -558,6 +574,19 @@ body{
     margin-left: 15px;
 }
 
+.clear_cart {
+    float: right;
+    margin-right: 15px;
+    color: black;
+}
+
+#my_stupid_cart {
+    margin-left: 35px;
+    display: inline-block;
+    width: 200px;
+    text-align: center;
+}
+
 .column {
     float: left;
     display: inline-block;
@@ -685,6 +714,10 @@ body{
     outline: 1px dotted black;
     vertical-align: middle;
     display: inline-block;
+}
+
+.store_result:hover {
+    background-color: #eff0f2;
 }
 
 .store_logo {
