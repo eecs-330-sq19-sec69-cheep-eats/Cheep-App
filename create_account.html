@@ -98,10 +98,10 @@
                     state: document.getElementById('create_state').value,
                     zip: document.getElementById('create_zip').value,
                     recentSearches: JSON.stringify([]),
-                    cartItems: JSON.stringify((new Array(20).fill(null)))
+                    cartItems: JSON.stringify((new Array(40).fill(null)))
                 }).then(() => {
                     localStorage.setItem('recentSearches',JSON.stringify(['milk','eggs']));
-                    sessionStorage.setItem('cartItems',JSON.stringify((new Array(20).fill(null))));
+                    sessionStorage.setItem('cartItems',JSON.stringify((new Array(40).fill(null))));
                     sessionStorage.setItem('username', document.getElementById('create_username').value);
                     console.log(sessionStorage.getItem('username'));
                     window.location.href = 'search_landing.html';

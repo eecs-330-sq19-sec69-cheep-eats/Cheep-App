@@ -267,7 +267,7 @@ function searchProductData(){
         }
 
         //NOTE - MUST CHANGE IF CHANGE ITEMS IN DATABASE B/C THIS JANKY
-        if(snapshot.key == 19){
+        if(snapshot.key == 39){
 
             console.log(productResults.length);
             //console.log(productResults);
