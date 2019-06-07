@@ -31,7 +31,7 @@
                     </div>
                 </div>
 
-                <button class="account_button" id="add_button" style="margin: 15px auto 0 auto" onclick="addItemToCart()">Add to Cart</button>
+                <button class="account_button" id="add_button" style="margin: 30px auto 0 auto" onclick="addItemToCart()">Add to Cart</button>
                 <div class="item_add_area" id="add_area">
                     <span class="material_icons" onclick="removeOne()" style="cursor: pointer">remove_circle_outline</span>
                     <input type="text" class="item_edit_field" id="inCart">
@@ -216,7 +216,6 @@
                 if(cartItems[item["ID"]] != null){
                     console.log('MORE THAN ONE ITEM IN CART');
                     document.getElementById("inCart_" + item["ID"]).value = cartItems[item["ID"]]["In Cart"];
-                    document.getElementById("store_results_wrapper").style.marginTop = '40px';
                     document.getElementById("add_button").style.display = "none";
                     document.getElementById("add_area").style.display = "block";
                 }
@@ -282,7 +281,6 @@
 
                 document.getElementById("inCart_" + currItem["ID"]).value = 1;
 
-                document.getElementById("store_results_wrapper").style.marginTop = '40px';
                 document.getElementById("add_button").style.display = "none";
                 document.getElementById("add_area").style.display = "block";
             }
@@ -311,7 +309,6 @@
                 if(cartItems[currItem["ID"]]["In Cart"] == 0){
                     cartItems[currItem["ID"]] = null;
 
-                    document.getElementById("store_results_wrapper").style.marginTop = '25px';
                     document.getElementById("add_button").style.display = "block";
                     document.getElementById("add_area").style.display = "none";
                 }

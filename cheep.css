@@ -642,6 +642,7 @@ body{
 
 .item_wrapper {
     padding-top: 20px;
+    height: 190px;
 }
 
 .item_pic {
@@ -678,6 +679,7 @@ body{
     height: 30px;
     margin: auto;
     display: none;
+    margin-top: 15px;
 }
 
 .item_add_area .material_icons{
@@ -708,7 +710,7 @@ body{
 }
 
 #store_results_wrapper {
-    margin-top: 25px;
+    margin-top: 40px;
     overflow-y: scroll;
     overflow-x: hidden;
     outline: 1px dotted black;
