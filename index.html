@@ -57,6 +57,11 @@
             function login(){
                 console.log('Login Function Called');
 
+                if(document.getElementById('login_username').value.includes('.') || document.getElementById('login_username').value.includes('#') || document.getElementById('login_username').value.includes('$') || document.getElementById('login_username').value.includes('[') || document.getElementById('login_username').value.includes(']')){
+                    alert('Username cannot contain ".", "#", "$", "[", or "]"');
+                    return;
+                }
+
                 firebase.database().ref('/users/' + document.getElementById('login_username').value).once("value").then(function(snapshot) {
                     if (!snapshot.exists()){
                         alert('That username does not exist');

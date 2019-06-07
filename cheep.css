@@ -816,7 +816,7 @@ body{
     display: inline-block;
 }
 
-.store_result:hover {
+.compare_store:hover {
     background-color: #eff0f2;
 }
 

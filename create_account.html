@@ -74,6 +74,11 @@
                     return;
                 }
 
+                if(document.getElementById('create_username').value.includes('.') || document.getElementById('create_username').value.includes('#') || document.getElementById('create_username').value.includes('$') || document.getElementById('create_username').value.includes('[') || document.getElementById('create_username').value.includes(']')){
+                    alert('Username cannot contain ".", "#", "$", "[", or "]"');
+                    return;
+                }
+
                 if(document.getElementById('create_username').value.length > 8 || document.getElementById('create_password').value.length > 8){
                     alert('Username and Password must be no longer than 8 characters.');
                     return;
