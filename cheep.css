@@ -203,13 +203,13 @@ body{
 
 .logout {
     margin-top: 30px;
-    background-image: linear-gradient(#ef0202,#af0000);
+    background-image: linear-gradient(#fcc276,#f9b254);
     color: white;
 }
 
 .logout:hover{
     background-image: linear-gradient(white,lightgray);
-    color: #ef0202;
+    color: #f9b254;
 }
 
 /*
@@ -445,12 +445,16 @@ body{
 }
 
 .result_add_area .material_icons{
-    color: deepskyblue;
+    color: gray;
     font-size: 14pt;
     position: relative;
     bottom: -4px;
     padding: 0 4px;
     float: right;
+}
+
+.result_add_area .material_icons:hover{
+    color: deepskyblue;
 }
 
 .result_edit_field{
@@ -676,12 +680,16 @@ body{
 }
 
 .item_add_area .material_icons{
-    color: deepskyblue;
+    color: gray;
     font-size: 16pt;
     position: relative;
     bottom: -2px;
     padding: 0 4px;
     /*float: right;*/
+}
+
+.item_add_area .material_icons:hover{
+    color: deepskyblue;
 }
 
 .item_edit_field {
