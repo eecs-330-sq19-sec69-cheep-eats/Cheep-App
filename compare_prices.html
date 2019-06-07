@@ -150,7 +150,7 @@
                         for(let s = 0; s<5; s++){
 
                             if(prices[s] !== ""){
-                                console.log('Price of ' + cartItems[i]["Name"] + ' at ' + stores[s] + ': ' + prices[s]);
+                                //console.log('Price of ' + cartItems[i]["Name"] + ' at ' + stores[s] + ': ' + prices[s]);
                                 totalPrices[s] += parseFloat(prices[s])*cartItems[i]["In Cart"];
                             }
                             else{
@@ -223,7 +223,7 @@
                 }
 
                 let allSortInds = Array.from(allStorePrices).sort(function(a,b) { return a - b;});
-                console.log(allSortInds);
+                console.log('stores with all items sorted prices: ' + allSortInds);
                 for(let i = 0; i<allSortInds.length; i++) {
                     divScreen.appendChild(allStores[allStorePrices.indexOf(allSortInds[i])]);
                 }
@@ -235,51 +235,65 @@
                     divScreen.appendChild(missHeader);
                 }
 
+                let inCart = cartItems.map(item => Number(item != null));
+                let numInCart = inCart.reduce((a,b) => a + b, 0);
+                console.log(numInCart + ' items in cart');
 
-                let missStores = [];
-                let missStorePrices = [];
+                //cycle through number missing
+                for(let c = 1; c < numInCart+1; c++){
 
-                for(let i = 0; i < missing.length; i++) {
+                    let missStores = [];
+                    let missStorePrices = [];
 
-                    //if store is missing items
-                    if (missing[i] > 0) {
+                    //cycle through stores
+                    for(let i = 0; i < missing.length; i++) {
 
-                        let storeEl = document.createElement('div');
-                        storeEl.classList.add('store_result');
-                        storeEl.innerHTML = `
-                            <div class="row">
-                                <div class="column left">
-                                    <img src=${storeLogos[i]} class="store_logo">
+                        //if store is missing c items
+                        if (missing[i] == c) {
+
+                            console.log(stores[i] + ' is missing ' + c + ' item(s)');
+
+                            let storeEl = document.createElement('div');
+                            storeEl.classList.add('store_result');
+                            storeEl.innerHTML = `
+                                <div class="row">
+                                    <div class="column left">
+                                        <img src=${storeLogos[i]} class="store_logo">
+                                    </div>
+                                    <div class="column middle">
+                                        <div class="store_name">${stores[i]}</div>
+                                        <div class="store_distance">${dists[i]}</div>
+                                    </div>
+                                    <div class="column right">
+                                        <div class="store_price">${'$' + totalPrices[i].toFixed(2)}</div>
+                                    </div>
+                                    <div class="column alert">
+                                        <div class="material_icons">error_outline</div> ${missing[i]}
+                                    </div>
                                 </div>
-                                <div class="column middle">
-                                    <div class="store_name">${stores[i]}</div>
-                                    <div class="store_distance">${dists[i]}</div>
-                                </div>
-                                <div class="column right">
-                                    <div class="store_price">${'$' + totalPrices[i].toFixed(2)}</div>
-                                </div>
-                                <div class="column alert">
-                                    <div class="material_icons">error_outline</div> ${missing[i]}
-                                </div>
-                            </div>
-                        `
-                        storeEl.onclick = function cartBreakdown(){
-                            sessionStorage.setItem('cartBreakdown',JSON.stringify([stores[i],storeLogos[i],dists[i],totalPrices[i]]));
-                            window.location.href = 'cart_breakdown.html';
+                            `
+                            storeEl.onclick = function cartBreakdown(){
+                                sessionStorage.setItem('cartBreakdown',JSON.stringify([stores[i],storeLogos[i],dists[i],totalPrices[i]]));
+                                window.location.href = 'cart_breakdown.html';
+                            }
+                            storeEl.style.cursor = 'pointer';
+                            missStores.push(storeEl);
+                            missStorePrices.push(totalPrices[i]);
+
                         }
-                        storeEl.style.cursor = 'pointer';
-                        missStores.push(storeEl);
-                        missStorePrices.push(totalPrices[i]);
 
+                    }//end store loop
+
+                    let missSortInds = Array.from(missStorePrices).sort(function(a,b) { return a - b;});
+                    if(missSortInds.length > 0){
+                        console.log('stores missing ' + c + ' item(s) sorted prices: ' + missSortInds);
+                    }
+                    for(let i = 0; i<missSortInds.length; i++) {
+                        divScreen.appendChild(missStores[missStorePrices.indexOf(missSortInds[i])]);
                     }
 
-                }
+                }//end number missing loop
 
-                let missSortInds = Array.from(missStorePrices).sort(function(a,b) { return a - b;});
-                console.log(missSortInds);
-                for(let i = 0; i<missSortInds.length; i++) {
-                    divScreen.appendChild(missStores[missStorePrices.indexOf(missSortInds[i])]);
-                }
 
             }
             comparePrices();

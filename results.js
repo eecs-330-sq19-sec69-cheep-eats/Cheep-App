@@ -248,7 +248,9 @@ function searchProductData(){
     if(recentSearches.includes(searchText)) {
         recentSearches.splice(recentSearches.indexOf(searchText), 1);
     }
-    recentSearches.unshift(searchText);
+    if(searchText != " "){
+        recentSearches.unshift(searchText);
+    }
     if(recentSearches.length > 5){
         recentSearches.pop();
     }
