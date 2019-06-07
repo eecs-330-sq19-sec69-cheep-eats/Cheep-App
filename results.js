@@ -295,3 +295,10 @@ function saveQuantities(dest){
     sessionStorage.setItem('cartItems',JSON.stringify(cartItems));
     window.location.href = dest;
 }
+
+function cancel(){
+    document.getElementById('logout_popup').style.display = 'none';
+}
+function confirmAction(){
+    document.getElementById('logout_popup').style.display = 'block';
+}

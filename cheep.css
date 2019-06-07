@@ -151,10 +151,16 @@ body{
     margin: 5px;
     width: 100px;
     background-color: deepskyblue;
-    border: none;
+    border: deepskyblue solid 2px;
     position: relative;
     color: white;
     font-size: 16pt;
+    cursor: pointer;
+}
+
+#logout_yes_button:hover{
+    background-color: white;
+    color: deepskyblue;
 }
 
 #logout_no_button{
@@ -162,10 +168,18 @@ body{
     margin: 5px;
     width: 100px;
     background-color: white;
-    border: #555555 solid 1px;
+    border: orange solid 2px;
     position: relative;
-    color: #555555;
+    color: orange;
     font-size: 16pt;
+    cursor: pointer;
+}
+
+#logout_no_button:hover{
+    background-color: #fcc276;
+    border: #fcc276 solid 2px;
+    color: white;
+    /*color: #555555;*/
 }
 
 #dark_screen{
