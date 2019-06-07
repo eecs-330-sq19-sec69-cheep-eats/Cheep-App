@@ -14,11 +14,11 @@
                 <div class="logout_vertical_adjust">
                     <div class="logout_popup_text">
                         <div class="logout_message" > Are you sure you want to clear cart?</div>
-                        <button id="logout_no_button">
+                        <button id="logout_no_button" onclick="clearCart()">
                             <!--<div id="logout_x" class="material_icons"> close </div>-->
                             Clear
                         </button>
-                        <button id="logout_yes_button">
+                        <button id="logout_yes_button" onclick="cancel()">
                             Cancel
                         </button>
                     </div>
@@ -29,7 +29,7 @@
 
             <div id="header" style="display: inline-block;">
                 <div id="my_stupid_cart">My Cart</div>
-                <div class="material_icons clear_cart">
+                <div onclick="confirmAction()" class="material_icons clear_cart" style="cursor: pointer">
                     remove_shopping_cart
                 </div>
             </div>
@@ -266,6 +266,13 @@
 
             }
             loadCart();
+        </script>
+
+        <script>
+            function clearCart(){
+                sessionStorage.setItem('cartItems',JSON.stringify((new Array(20).fill(null))));
+                window.location.href = 'my_cart.html';
+            }
         </script>
 
     </body>
