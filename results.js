@@ -91,7 +91,7 @@ function buildResultsList() {
             `
             rUpperElement.onclick = function itemDetails(){
                 sessionStorage.setItem('itemDetails',JSON.stringify(searchResults[i]));
-                window.location.href = 'item_details.html';
+                saveQuantities('item_details.html');
             }
             rUpperElement.style.cursor = 'pointer';
             result.appendChild(rUpperElement);
