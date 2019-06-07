@@ -178,7 +178,6 @@ body{
 
 .immutable {
     text-align: left;
-    cursor: default;
 }
 
 .account_button {
@@ -535,7 +534,6 @@ body{
     margin-left: 8%;
     text-align: left;
     color: black;
-    cursor: default;
 }
 
 #SE_search_history{
@@ -656,14 +654,12 @@ body{
     font-weight: 800;
     font-size: 12pt;
     text-align: left;
-    cursor: default;
 }
 
 .item_size {
     margin-top: 10px;
     font-size: 12pt;
     text-align: left;
-    cursor: default;
 }
 
 .item_price_range {
@@ -671,7 +667,6 @@ body{
     font-style: italic;
     font-size: 12pt;
     text-align: left;
-    cursor: default;
 }
 
 .item_add_area {
@@ -825,6 +820,7 @@ body{
     border: none;
     font-size: 20px;
     color: gray;
+    cursor: pointer;
 }
 
 #filter_clear_button{
@@ -837,6 +833,7 @@ body{
     position: relative;
     /*bottom: 5px;*/
     color: gray;
+    cursor: pointer;
 }
 
 #filter_apply_button{
@@ -845,10 +842,21 @@ body{
     width: 60px;
     float: right;
     background-color: deepskyblue;
-    border: none;
+    border: deepskyblue solid 1px;
     position: relative;
     /*bottom: 5px;*/
     color: white;
+    cursor: pointer;
+}
+
+#filter_clear_button:hover{
+    color: white;
+    background-color: gray;
+}
+
+#filter_apply_button:hover{
+    color: deepskyblue;
+    background-color: white;
 }
 
 /*
